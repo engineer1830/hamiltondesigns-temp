@@ -1,3 +1,5 @@
+print("PyScript engine loaded")
+
 import numpy as np
 
 # ---- core helpers (adapted from your engine, no tkinter/yfinance) ----

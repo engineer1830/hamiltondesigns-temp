@@ -15,13 +15,23 @@
 
     <!-- PyScript -->
 
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <!-- PyScript (ESM CDN that works on GitHub Pages) -->
+    <link rel="stylesheet" href="https://pyscript.net/esm/pyscript.css" />
+
+    <py-config type="toml">
+        packages = []
+    </py-config>
+
+    <script type="module" src="https://pyscript.net/esm/pyscript.js"></script>
+
+
+    <!-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     
     <py-config type="toml">
         packages = []
     </py-config>
     
-    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script> -->
 
     <!-- <link rel="stylesheet" href="https://pyscript.net/releases/2024.12.1/pyscript.css" />
 

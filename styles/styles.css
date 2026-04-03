@@ -1,0 +1,786 @@
+/* -------------------------
+   1. Reset + base
+-------------------------- */
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    min-height: 100vh;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+
+/* -------------------------
+   2. Page frame
+-------------------------- */
+header,
+main,
+footer
+{
+    max-width: 1500px;
+    margin: 1rem auto;
+    border: 1px solid #bbb;
+    padding: 10px;
+}
+
+header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #660033;
+    color: white;
+    padding: 1rem;
+    padding-right: 3.5rem;
+    font-size: 2rem;
+    min-height: 60px;
+}
+
+main
+{
+    max-width: 1500px;
+    margin: 1rem auto;
+    padding: 1rem;
+}
+
+/* -------------------------
+   3. Typography
+-------------------------- */
+h1
+{
+    text-align: center;
+    color: #660033;
+    font-size: 2.25rem;
+}
+
+h2
+{
+    text-align: center;
+}
+
+.col h3
+{
+    margin-bottom: 0.5rem;
+}
+
+.two-col .col h3,
+.three-col .col h3
+{
+    text-align: center;
+    width: 100%;
+}
+
+/* -------------------------
+   4. Intro section + grid-1 on home
+-------------------------- */
+.intro
+{
+    padding: 1rem 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.intro h2
+{
+    color: #660033;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.intro h3
+{
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.intro h3.summary
+{
+    text-align: center;
+    color: #336600;
+    padding-top: 2rem;
+}
+
+.intro p
+{
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* intro grid */
+.grid-1
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.left-col,
+.right-col
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tool-row
+{
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+}
+
+.tool-row .img-text-row
+{
+    width: 60%;
+    margin: 0 auto;
+}
+
+/* -------------------------
+   5. Logo row
+-------------------------- */
+.logo-row
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    max-width: 100%;
+    margin: 2rem auto;
+}
+
+.side-img
+{
+    flex: 0 0 25%;
+    max-width: 100%;
+    height: auto;
+    margin-right: 0.1rem;
+}
+
+.center-img
+{
+    flex: 0 0 50%;
+    max-width: 100%;
+    height: auto;
+}
+
+.side-img:last-of-type
+{
+    margin-right: 0;
+    margin-left: 0.1rem;
+}
+
+/* -------------------------
+   6. Lists
+-------------------------- */
+
+/* home list */
+main ol
+{
+    padding-left: 1.5rem;
+    padding-right: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+
+ol
+{
+    padding: 2rem;
+}
+
+/* guiding principles list */
+.guiding-principles h3
+{
+    margin-bottom: 0.5rem;
+}
+
+.guiding-principles ol
+{
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* -------------------------
+   7. Navigation for header
+-------------------------- */
+nav
+{
+    display: flex;
+    max-width: 700px;
+}
+
+.navigation ul
+{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1.25rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation a
+{
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.navigation a:hover
+{
+    color: lightblue;
+    text-decoration: overline;
+}
+
+#menu
+{
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+#menu::before
+{
+    content: "☰";
+}
+
+#menu.open::before
+{
+    content: "❌";
+}
+
+#menu
+{
+    display: none;
+}
+
+.navigation.open ul
+{
+    display: flex;
+}
+
+/* -------------------------
+   8a. Image/text link rows for home
+-------------------------- */
+.img-text-row
+{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.img-text-row:hover
+{
+    background-color: #f0f0f0;
+}
+
+.img-text-row span
+{
+    font-size: 1.1rem;
+    flex: 1;
+}
+
+.img-text-row img
+{
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.link-row
+{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.link-row:hover
+{
+    background-color: #f0f0f0;
+    transform: scale(1.01);
+}
+
+.link-row img
+{
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.link-row:hover img
+{
+    transform: scale(1.05);
+}
+
+/* --------------------------
+8b. Text/image for vehicles
+--------------------------- */
+
+.text-image-row
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1rem 0;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 7px;
+}
+
+.text-block
+{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.text-image-row:nth-child(even)
+{
+    flex-direction: row-reverse;
+}
+
+.text-image-row:nth-child(odd)
+{
+    margin-left: 8rem;
+}
+
+.text-image-row:nth-child(even)
+{
+    margin-right: 8rem;
+}
+
+.text-image-row p
+{
+    flex: 1;
+    margin: 0;
+}
+
+.text-image-row img
+{
+    border-radius: 6px;
+}
+
+.staggered-block
+{
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* -------------------------
+   9. Full-width sections for principles
+-------------------------- */
+.philo-intro,
+.risk-section,
+.invest-simple,
+.compound-interest,
+.retirement-plan,
+.simple
+{
+    margin: 2rem 0;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 10px;
+    background-color: lavender;
+}
+
+.my-choices
+{
+    max-width: 100%;
+    margin: 0 auto 2rem;
+    padding: 1rem 2rem;
+    border: 1px solid black;
+    border-radius: 6px;
+    background: beige;
+}
+
+
+.my-choices h2
+{
+    margin-bottom: 1rem;
+}
+
+.my-choices p
+{
+    margin: 0.5rem 0;
+}
+
+/* ----------------------------------
+   10. Two-column layout for principles
+----------------------------------- */
+.two-col
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.two-col .col
+{
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 10px;
+    background-color: lightgoldenrodyellow;
+}
+
+.col p,
+.col ol,
+.col ul
+{
+    margin-top: 0.5rem;
+}
+
+.know-row .col
+{
+    padding-right: 1rem;
+}
+
+/* -----------------------------------
+   11. Three-column layout for principles
+------------------------------------- */
+.three-col
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+    align-items: stretch;
+}
+
+.three-col ol
+{
+    padding: 0 1.5rem 1.5rem;
+}
+
+.three-col .col
+{
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 1.75rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #CAEBBA;
+}
+
+.three-col .col ul
+{
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+/* ------------------------------------------------
+   12. Quote callout in compound interest on principles
+------------------------------------------------- */
+.quote-callout
+{
+    font-style: italic;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-left: 0.25rem;
+    text-align: center;
+    padding-top: 1.5rem;
+}
+
+/* ---------------------------------
+   13. Simple list tweaks on principles page
+------------------------------------ */
+.simple ul
+{
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+    line-height: 1.6;
+}
+
+.simple ul li
+{
+    margin-bottom: 0.5rem;
+}
+
+/* -------------------------
+   14. Footer
+---------------------------- */
+.footer
+{
+    grid-column: 1 / 3;
+    grid-row: 3;
+    background: #660033;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+/* -------------------------
+   15. Gallery grid for footer
+-------------------------- */
+.gallery-grid section
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* ----------------------------
+    16. Site wide rules for links
+------------------------------- */
+
+main a:link,
+main a:visited
+{
+    color: blue;
+    text-decoration: none;
+}
+
+.navigation a:link,
+.navigation a:visited
+{
+    color: white;
+    text-decoration: none;
+}
+
+.img-text-row:link,
+.img-text-row:visited,
+.img-text-row:hover,
+.img-text-row:active,
+.link-row:link,
+.link-row:visited,
+.link-row:hover,
+.link-row:active
+{
+    color: inherit;
+    text-decoration: none;
+}
+
+/* -------------------------
+   17. Phase Input + Cards
+-------------------------- */
+
+.phase-overview
+{
+    margin: 2rem 0;
+    padding: 1.5rem 2rem;
+    border: 2px solid #660033;
+    border-radius: 8px;
+    background: #fdf7fb;
+}
+
+.phase-divider
+{
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 1500px;
+    border: 0;
+    border-top: 2px solid #ccc;
+}
+
+.phase-input-section
+{
+    margin: 2rem auto;
+    padding: 0.75rem;
+    background: #f7f9fc;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.phase-input-section h3
+{
+    margin: 0.25rem auto 0.75rem auto;
+    margin-bottom: 0.75rem;
+    font-size: 1.6rem;
+    text-align: center;
+    color: #660033;
+    max-width: 500px;
+}
+
+#ageInput
+{
+    display: block;
+    margin: 0.75rem auto;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1.3rem;
+    width: 200px;
+    border: 2px solid #660033;
+    border-radius: 6px;
+}
+
+.input-hint
+{
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+/* Phase cards in responsive grid */
+.gallery-grid
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Card styling */
+.gallery-grid section
+{
+    background: white;
+    border: 2px solid #bbb;
+    border-radius: 10px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery-grid section:hover
+{
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.gallery-grid h3
+{
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    color: #660033;
+}
+
+.gallery-grid p
+{
+    margin: 0.4rem 0;
+}
+
+.gallery-grid img
+{
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    border-radius: 6px;
+}
+
+.phase-img
+{
+    display: block;
+    margin: 0 auto 1rem auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* -------------------------
+   MOBILE LAYOUT (max 768px)
+-------------------------- */
+@media (max-width: 768px)
+{
+
+    #menu
+    {
+        display: flex;
+    }
+
+    nav
+    {
+        display: none;
+        width: 100%;
+    }
+
+    nav.open
+    {
+        display: block;
+    }
+
+    .navigation ul
+    {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+        text-align: center;
+    }
+
+    .grid-1,
+    .two-col,
+    .three-col
+    {
+        grid-template-columns: 1fr !important;
+    }
+
+    .text-image-row
+    {
+        flex-direction: column !important;
+        margin: 1rem 0 !important;
+    }
+
+    .logo-row
+    {
+        gap: 0.5rem;
+    }
+
+    .side-img,
+    .center-img
+    {
+        flex: 1 1 auto;
+        max-width: 30%;
+        height: auto;
+    }
+
+    .center-img
+    {
+        max-width: 40%;
+    }
+
+    .phase-input-section
+    {
+        max-width: 95%;
+    }
+
+    .gallery-grid
+    {
+        grid-template-columns: 1fr;
+    }
+
+    .phase-img
+    {
+        max-height: 300px;
+        width: auto;
+        object-fit: contain;
+    }
+}

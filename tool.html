@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retirement Simulator</title>
+
+    <link rel="stylesheet" href="styles/tool.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts/tool.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="site-title">Retirement and Saving Planning</div>
+        <button type="button" id="menu" aria-label="Toggle navigation menu"></button>
+        <nav class="navigation">
+            <ul>
+                <li><a href="siteplan.html" id="home">Home</a></li>
+                <li><a href="principles.html" id="pnp" target="_blank">Philosophy and Principles</a></li>
+                <li><a href="phases.html" id="phases" target="_blank">Phases</a></li>
+                <li><a href="vehicles.html" id="vehicles" target="_blank">Investment Vehicles</a></li>
+                <li><a href="resources.html" id="resources" target="_blank">Resources</a></li>
+                <li><a href="tool.html" id="tool" target="_blank">Planning Tool</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="logo-row">
+        <img class="side-img" src="images/prepare-small.jpg" alt="Prepare" width="250">
+        <img class="center-img" src="images/logo-small.jpg" alt="Logo" width="450">
+        <img class="side-img" src="images/finish-small.jpg" alt="Finish" width="250">
+    </div>
+
+    <div id="retirement-simulator" class="app-container">
+        <header class="app-header">
+            <h1>Retirement Calculations with Monte Carlo Simulation</h1>
+        </header>
+
+        <main class="app-main">
+            <section class="form-section">
+                <h2>Inputs</h2>
+
+                <form id="retirement-form">
+                    <div class="form-grid">
+
+                        <label>
+                            <span class="label-text">Current age <span class="required">*</span></span>
+                            <input type="number" id="currentAge" value="35" required>
+                        </label>
+
+                        <label>
+                            <span class="label-text">Gender (m/f) <span class="required">*</span></span>
+                            <input type="text" id="gender" value="m" maxlength="1" required>
+                        </label>
+
+                        <label>
+                            <span class="label-text">Planned retirement age <span class="required">*</span></span>
+                            <input type="number" id="retireAge" value="62" required>
+                        </label>
+
+                        <label>
+                            <span class="label-text">Current retirement savings <span class="required">*</span></span>
+                            <input type="text" inputmode="numeric" id="currentLump" value="1,000,000" required>
+                        </label>
+
+                        <label>
+                            <span class="label-text">Current annual salary <span class="required">*</span></span>
+                            <input type="text" inputmode="numeric" id="currentSalary" value="150,000" required>
+                        </label>
+
+                        <label>
+                            <span class="label-text">% of salary saved for retirement <span
+                                    class="required">*</span></span>
+                            <input type="number" id="investmentPct" value="10" step="0.1" required>
+                        </label>
+
+                        <label>
+                            <span class="label-text">Tickers (comma-separated)</span>
+                            <input type="text" id="tickers" placeholder="e.g., VTI, BND">
+                        </label>
+
+                        <label>
+                            <span class="label-text">Annual salary growth % <span class="required">*</span></span>
+                            <input type="number" id="salaryGrowth" value="2" step="0.1" required>
+                        </label>
+
+                        <label>
+                            <span class="label-text">Annual withdrawal % in retirement <span
+                                    class="required">*</span></span>
+                            <input type="number" id="withdrawRate" value="5" step="0.1" required>
+                        </label>
+
+                        <label>
+                            <span class="label-text">Annual inflation % <span class="required">*</span></span>
+                            <input type="number" id="inflation" value="3" step="0.1" required>
+                        </label>
+
+                        <label>
+                            <span class="label-text">Monte Carlo runs <span class="required">*</span></span>
+                            <input type="text" inputmode="numeric" id="mcRuns" value="500" required>
+                        </label>
+
+                        <label>
+                            <span class="label-text">Stock volatility % <span class="required">*</span></span>
+                            <input type="number" id="stockVol" step="0.1" value="15" required>
+                        </label>
+
+                        <label>
+                            <span class="label-text">Bond volatility % <span class="required">*</span></span>
+                            <input type="number" id="bondVol" step="0.1" value="5" required>
+                        </label>
+
+                    </div>
+
+                    <p class="warning">
+                        Note: Monte Carlo runs of 1000+ may freeze the UI in the browser.
+                    </p>
+
+                    <button type="submit" class="primary-btn">Can I retire?</button>
+                </form>
+            </section>
+
+            <section class="output-section">
+                <h2>Results</h2>
+                <textarea id="resultsText" rows="20" readonly></textarea>
+            </section>
+
+            <section class="charts-section">
+                <h2>Charts</h2>
+            
+                <div class="chart-wrapper">
+                    <h3>Deterministic Balance Over Time</h3>
+                    <canvas id="balanceChart"></canvas>
+                </div>
+            
+                <div class="chart-wrapper">
+                    <h3>Deterministic Withdrawals Over Time</h3>
+                    <canvas id="withdrawChart"></canvas>
+                </div>
+            
+                <!-- ⭐ NEW REAL-DOLLAR CHART -->
+                <div class="chart-wrapper">
+                    <h3 id="realChartHeader">Withdrawals & Balance (Real Dollars)</h3>
+                    <canvas id="withdrawChartReal"></canvas>
+                </div>
+            
+                <div class="chart-wrapper">
+                    <h3>Monte Carlo Final Legacy Distribution</h3>
+                    <canvas id="mcChart"></canvas>
+                </div>
+            
+            </section>
+            
+
+            <!-- <section class="charts-section">
+                <h2>Charts</h2>
+
+                <div class="chart-wrapper">
+                    <h3>Deterministic Balance Over Time</h3>
+                    <canvas id="balanceChart"></canvas>
+                </div>
+
+                <div class="chart-wrapper">
+                    <h3>Deterministic Withdrawals Over Time</h3>
+                    <canvas id="withdrawChart"></canvas>
+                </div>
+
+                <div class="chart-wrapper">
+                    <h3>Monte Carlo Final Legacy Distribution</h3>
+                    <canvas id="mcChart"></canvas>
+                </div>
+
+            </section> -->
+        </main>
+
+        <footer class="app-footer">
+            <p>Retirement and Saving Planning — Browser Simulation</p>
+        </footer>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; <span id="currentyear"></span> | Jesse Hamilton | USA</p>
+        <p>Last Modification: <span id="lastModified"></span></p>
+    </footer>
+
+</body>
+
+</html>
+
+                
+    

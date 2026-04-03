@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WDD 131 - Project Work - Jesse Hamilton">
+    <title>Investment Phases</title>
+    <meta name="author" content="Jesse Hamilton">
+
+    <link rel="stylesheet" href="styles/styles.css" media="print" onload="this.media='all'">
+    <script src="scripts/scripts.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style"
+        onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    </noscript>
+</head>
+
+<body>
+    <header>
+        <div class="site-title">Retirement and Saving Planning</div>
+        <button type="button" id="menu" aria-label="Toggle navigation menu"></button>
+        <nav class="navigation">
+            <ul>
+                <li><a href="siteplan.html" id="home">Home</a></li>
+                <li><a href="principles.html" id="pnp" target="_blank">Philosophy and Principles</a></li>
+                <li><a href="phases.html" id="phases" target="_blank">Phases</a></li>
+                <li><a href="vehicles.html" id="vehicles" target="_blank">Investment Vehicles</a></li>
+                <li><a href="resources.html" id="resources" target="_blank">Resources</a></li>
+                <li><a href="tool.html" id="tool" target="_blank">Planning Tool</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="logo-row">
+        <img class="side-img" src="images/prepare-small.jpg"
+            alt="Logo image for Hamilton Family Financial Planning and Tools" width="250">
+        <img class="center-img" src="images/logo-small.jpg"
+            alt="Logo image for Hamilton Family Financial Planning and Tools" width="450">
+        <img class="side-img" src="images/finish-small.jpg"
+            alt="Logo image for Hamilton Family Financial Planning and Tools" width="250">
+    </div>
+
+    <main>
+        <section class="phase-overview">
+            <h2>Phases of Savings</h2>
+            <p>Phases respond to how much time you have before you need the money. I break it down as follows:</p>
+            <ol>
+                <li><strong>Aggressive Phase (Young)</strong> - 100% stocks up until you are 50 as that means you still
+                    have 10-15 years from a typical retirement age of
+                    60-65</li>
+                <li><strong>Moderate Phase (Middle-aged and looking to the future)</strong> - 65% stocks / 35% bonds
+                    from age 50-59 as you're approaching retirement and have less time to absorb a
+                    market correction</li>
+                <li><strong>Preserving Retirement Phase (Shadow of retirement)</strong> - 50% / 50% stocks and bonds
+                    from age 60-retirement as you coast into the point you'll use
+                    the money.</li>
+                <li><strong>Legacy phase</strong> - 35% stocks / 65% bonds from age 70-end. This focuses most on
+                    preserving money.</li>
+            </ol>
+            <p>At the point that you stop working, you enter a withdrawal phase. A general approach is that the
+                withdrawal phase operates
+                the same as the preserving retirement phase (50/50) from the point that you stop accumulating wealth and
+                start consuming
+                your wealth. This governs investments until you reach the legacy phase at 70. You rebalance your assets
+                and continue to
+                withdraw from your savings.
+
+                * Withdrawal phase - if you retire early or in your 60s and stop contributing and start withdrawing,
+                this is how the
+                money is preserved until you reach legacy phase.</p>
+        </section>
+        <hr class="phase-divider">
+        <section class="phase-input-section">
+            <h3>Find Your Investment Phases</h3>
+            <label for="ageInput">Enter your age (20-120):</label>
+            <input type="number" id="ageInput" min="1" max="120" placeholder="e.g., 25">
+            <p class="input-hint">Your phases will appear below automatically.</p>
+        </section>
+        <div class="gallery-grid"></div>
+    </main>
+    <footer class="footer">
+        <p>&copy; <span id="currentyear"></span> | Jesse Hamilton | USA</p>
+        <p>Last Modification: <span id="lastModified"></span></p>
+    </footer>
+</body>

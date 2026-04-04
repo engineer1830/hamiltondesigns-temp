@@ -6,7 +6,9 @@ export default async function handler(req, res) {
     }
 
     const API_KEY = process.env.EODHD_API_KEY;
-    const url = `https://eodhd.com/api/eod/${symbol}.US?api_token=${API_KEY}&fmt=json&order=a`;
+
+    // ⭐ Force full history instead of 1 year
+    const url = `https://eodhd.com/api/eod/${symbol}.US?api_token=${API_KEY}&fmt=json&order=a&from=2000-01-01`;
 
     try {
         const response = await fetch(url);
@@ -21,3 +23,4 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: "Server error", details: err.message });
     }
 }
+

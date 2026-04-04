@@ -73,8 +73,7 @@ const EODHD_KEY = "69d0b383481955.22006105";
 
 async function getEodHistorical(ticker) {
     try {
-        const url = `https://eodhd.com/api/eod/${ticker}.US?api_token=${EODHD_KEY}&fmt=json&order=a`;
-        const res = await fetch(url);
+        const res = await fetch(`/api/eod?symbol=${ticker}`);
         const data = await res.json();
 
         if (!Array.isArray(data) || data.length === 0) return [];
@@ -94,6 +93,7 @@ async function getEodHistorical(ticker) {
         return [];
     }
 }
+
 
 async function financialPerformance(tickers) {
     const stockReturns = [];

@@ -92,14 +92,23 @@ async function getEodHistorical(ticker) {
 
         if (!Array.isArray(data) || data.length === 0) return [];
 
+        // ⭐ Detect 1-year warning BEFORE mapping
+        const hasWarning = data[data.length - 1]?.warning ? true : false;
+
         // Convert to your existing format
         const history = data
             .map(d => ({
                 date: new Date(d.date),
-                close: parseFloat(d.adjusted_close ?? d.close)
+                close: parseFloat(d.adjusted_close ?? d.close),
+                warning: d.warning ?? null   // ⭐ preserve warning
             }))
             .filter(d => !isNaN(d.close))
             .sort((a, b) => a.date - b.date); // oldest → newest
+
+        // ⭐ Attach the warning to the LAST entry so handleHistoricalData sees it
+        if (hasWarning) {
+            history[history.length - 1].warning = data[data.length - 1].warning;
+        }
 
         return history;
     } catch (err) {
@@ -107,6 +116,7 @@ async function getEodHistorical(ticker) {
         return [];
     }
 }
+
 
 /* --------------------------------------------------
  *  1-YEAR DATA WARNING HANDLER

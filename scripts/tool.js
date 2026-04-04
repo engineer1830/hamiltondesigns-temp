@@ -66,32 +66,31 @@ function computeAnnualReturn(history) {
 }
 
 /* --------------------------------------------------
- *  FINANCIAL DATA (ALPHA VANTAGE)
+ *  FINANCIAL DATA (EODHD)
 -------------------------------------------------- */
 
-const ALPHA_KEY = "WENJUOLF6XZNDE0V";
+const EODHD_KEY = "69d0b383481955.22006105";
 
-async function getAlphaHistorical(ticker) {
+async function getEodHistorical(ticker) {
     try {
-        const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${ticker}&outputsize=full&apikey=${ALPHA_KEY}`;
+        const url = `https://eodhd.com/api/eod/${ticker}.US?api_token=${EODHD_KEY}&fmt=json&order=a`;
         const res = await fetch(url);
         const data = await res.json();
 
-        const series = data["Time Series (Daily)"];
-        if (!series) return [];
+        if (!Array.isArray(data) || data.length === 0) return [];
 
         // Convert to your existing format
-        const history = Object.entries(series)
-            .map(([date, values]) => ({
-                date: new Date(date),
-                close: parseFloat(values["5. adjusted close"])
+        const history = data
+            .map(d => ({
+                date: new Date(d.date),
+                close: parseFloat(d.adjusted_close ?? d.close)
             }))
             .filter(d => !isNaN(d.close))
             .sort((a, b) => a.date - b.date); // oldest → newest
 
         return history;
     } catch (err) {
-        console.error("Alpha fetch error:", err);
+        console.error("EODHD fetch error:", err);
         return [];
     }
 }
@@ -101,7 +100,7 @@ async function financialPerformance(tickers) {
     const bondReturns = [];
 
     for (const t of tickers) {
-        const hist = await getAlphaHistorical(t);
+        const hist = await getEodHistorical(t);
         const annual = computeAnnualReturn(hist);
         if (annual === null) continue;
 

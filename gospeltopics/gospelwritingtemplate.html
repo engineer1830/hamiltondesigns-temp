@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><!-- Writing Title Here --></title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles/gospeltopics.css">
+</head>
+
+<body>
+
+    <!-- Dark Mode Toggle -->
+    <label class="dark-toggle">
+        <input type="checkbox" id="darkModeToggle">
+        <span>Dark Mode</span>
+    </label>
+
+    <div class="layout">
+
+        <!-- ========================= -->
+        <!--        SIDEBAR            -->
+        <!-- ========================= -->
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h1>Writings</h1>
+                <input type="search" id="searchInput" placeholder="Search…" aria-label="Search writings">
+            </header>
+
+            <nav class="sidebar-nav" id="sidebarNav">
+                <!-- JS will populate this -->
+            </nav>
+        </aside>
+
+        <!-- ========================= -->
+        <!--        MAIN CONTENT       -->
+        <!-- ========================= -->
+        <main class="content">
+
+            <!-- Markdown content loads here -->
+            <article id="markdownContent"></article>
+
+            <!-- Related writings -->
+            <section class="related">
+                <h2>Related Writings</h2>
+                <div id="relatedWritings"></div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- JS -->
+    <script src="../../scripts/gospeltopics.js"></script>
+
+</body>
+
+</html>

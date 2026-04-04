@@ -9,7 +9,6 @@
     <meta name="author" content="Jesse Hamilton">
 
     <link rel="stylesheet" href="styles/gospeltopics.css" media="print" onload="this.media='all'">
-    <!-- <script src="scripts/.js" defer></script> -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +21,15 @@
 </head>
 
 <body>
+
+    <!-- ========================= -->
+    <!--        DARK MODE          -->
+    <!-- ========================= -->
+    <label class="dark-toggle">
+        <input type="checkbox" id="darkModeToggle">
+        <span>Dark Mode</span>
+    </label>
+
     <div class="layout">
 
         <!-- ========================= -->
@@ -35,43 +43,47 @@
             </header>
 
             <nav class="sidebar-nav" id="sidebarNav">
-
-                <!-- Example category -->
-                <section class="nav-section">
-                    <h2 class="nav-category">Leadership</h2>
-                    <ul>
-                        <li><a href="writings/leadership/courage.html">Courage Under Pressure</a></li>
-                        <li><a href="writings/leadership/decision-making.html">Decision Making</a></li>
-                        <li><a href="writings/leadership/influence.html">Influence vs Authority</a></li>
-                    </ul>
-                </section>
-
-                <!-- Another category -->
-                <section class="nav-section">
-                    <h2 class="nav-category">Faith</h2>
-                    <ul>
-                        <li><a href="writings/faith/trust.html">Trust in Uncertainty</a></li>
-                        <li><a href="writings/faith/grace.html">Grace in Daily Life</a></li>
-                    </ul>
-                </section>
-
-                <!-- Add more categories as needed -->
-
+                <!-- JS will populate this -->
             </nav>
+
         </aside>
+
         <!-- ========================= -->
         <!--        MAIN CONTENT       -->
         <!-- ========================= -->
         <main class="content" id="contentArea">
 
-            <article>
-                <h1>Jesse's Gospel Studies by Topic</h1>
-                <p>Select a topic from the sidebar to begin reading.</p>
-            </article>
+            <!-- HOME PAGE CONTENT (only visible on index.html) -->
+            <section id="homeContent">
+                <article>
+                    <h1>Jesse's Gospel Studies by Topic</h1>
+                    <p>Select a topic from the sidebar to begin reading.</p>
+                </article>
+
+                <!-- CARD SEARCH -->
+                <input type="search" id="cardSearch" placeholder="Search all writings…">
+
+                <!-- CARD GRID -->
+                <section class="card-grid" id="cardGrid"></section>
+
+                <!-- PAGINATION -->
+                <div id="pagination"></div>
+            </section>
+
+            <!-- WRITING PAGE CONTENT (only visible on writing pages) -->
+            <section id="writingContent">
+                <article id="markdownContent"></article>
+
+                <section class="related">
+                    <h2>Related Writings</h2>
+                    <div id="relatedWritings"></div>
+                </section>
+            </section>
 
         </main>
 
     </div>
+
     <script src="scripts/gospeltopics.js"></script>
     <footer></footer>
 </body>

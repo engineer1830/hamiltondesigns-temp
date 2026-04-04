@@ -1,0 +1,378 @@
+/* ============================================================
+   RESET & BASE TYPOGRAPHY
+============================================================ */
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    font-family: system-ui, sans-serif;
+    line-height: 1.6;
+    color: #222;
+    background: #fafafa;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode */
+body.dark
+{
+    background: #1e1e1e;
+    color: #e6e6e6;
+}
+
+/* ============================================================
+   DARK MODE TOGGLE
+============================================================ */
+.dark-toggle
+{
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1000;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.dark-toggle input
+{
+    transform: scale(1.3);
+}
+
+/* ============================================================
+   LAYOUT
+============================================================ */
+.layout
+{
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+}
+
+/* ============================================================
+   SIDEBAR
+============================================================ */
+.sidebar
+{
+    background: #ffffff;
+    border-right: 1px solid #ddd;
+    padding: 1.5rem;
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark .sidebar
+{
+    background: #2a2a2a;
+    border-color: #444;
+}
+
+.sidebar-header h1
+{
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar-header input[type="search"]
+{
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark .sidebar-header input[type="search"]
+{
+    background: #3a3a3a;
+    border-color: #666;
+    color: #eee;
+}
+
+/* Collapsible categories */
+.nav-category
+{
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #444;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+body.dark .nav-category
+{
+    color: #ddd;
+}
+
+.nav-section ul
+{
+    list-style: none;
+    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+    transition: max-height 0.3s ease;
+}
+
+.nav-section ul.collapsed
+{
+    display: none;
+}
+
+.nav-section li
+{
+    margin: 0.35rem 0;
+}
+
+.nav-section a
+{
+    text-decoration: none;
+    color: #333;
+    padding: 0.25rem 0;
+    display: block;
+    border-radius: 4px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+body.dark .nav-section a
+{
+    color: #ddd;
+}
+
+.nav-section a:hover,
+.nav-section a.active
+{
+    background: #e8f0fe;
+    color: #1a73e8;
+}
+
+body.dark .nav-section a:hover,
+body.dark .nav-section a.active
+{
+    background: #444;
+    color: #9bbcff;
+}
+
+/* ============================================================
+   CONTENT AREA
+============================================================ */
+.content
+{
+    padding: 2rem 3rem;
+    overflow-y: auto;
+}
+
+.content article
+{
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content h1,
+.content h2,
+.content h3
+{
+    margin-bottom: 1rem;
+}
+
+.content p
+{
+    margin-bottom: 1rem;
+}
+
+/* ============================================================
+   CARD GRID
+============================================================ */
+.card-grid
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.card
+{
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark .card
+{
+    background: #2a2a2a;
+    border-color: #444;
+}
+
+.card h3
+{
+    margin-bottom: 0.5rem;
+}
+
+.card .category
+{
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+body.dark .card .category
+{
+    color: #aaa;
+}
+
+.card .keywords
+{
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+body.dark .card .keywords
+{
+    color: #bbb;
+}
+
+.card .read-link
+{
+    text-decoration: none;
+    color: #1a73e8;
+    font-weight: 600;
+}
+
+body.dark .card .read-link
+{
+    color: #9bbcff;
+}
+
+/* ============================================================
+   PAGINATION
+============================================================ */
+#pagination
+{
+    margin-top: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+#pagination button
+{
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+#pagination button.active
+{
+    background: #1a73e8;
+    color: white;
+    border-color: #1a73e8;
+}
+
+body.dark #pagination button
+{
+    background: #2a2a2a;
+    border-color: #555;
+    color: #ddd;
+}
+
+body.dark #pagination button.active
+{
+    background: #9bbcff;
+    color: #222;
+}
+
+/* ============================================================
+   MARKDOWN CONTENT
+============================================================ */
+#markdownContent h1,
+#markdownContent h2,
+#markdownContent h3
+{
+    margin-top: 1.5rem;
+}
+
+#markdownContent p
+{
+    margin-bottom: 1rem;
+}
+
+/* ============================================================
+   RELATED WRITINGS
+============================================================ */
+.related
+{
+    margin-top: 3rem;
+}
+
+.related h2
+{
+    margin-bottom: 1rem;
+}
+
+.related ul
+{
+    list-style: none;
+    padding-left: 0;
+}
+
+.related li
+{
+    margin-bottom: 0.5rem;
+}
+
+.related a
+{
+    text-decoration: none;
+    color: #1a73e8;
+}
+
+body.dark .related a
+{
+    color: #9bbcff;
+}
+
+/* ============================================================
+   RESPONSIVE BEHAVIOR
+============================================================ */
+@media (max-width: 800px)
+{
+    .layout
+    {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar
+    {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    body.dark .sidebar
+    {
+        border-bottom-color: #444;
+    }
+
+    .content
+    {
+        padding: 1.5rem;
+    }
+}

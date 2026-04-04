@@ -71,39 +71,39 @@ function computeAnnualReturn(history) {
  *  FINANCIAL DATA (EODHD)
 -------------------------------------------------- */
 
-const EODHD_KEY = "69d0b383481955.22006105";
+// const EODHD_KEY = "69d0b383481955.22006105";
 
-async function getEodHistorical(ticker) {
-    try {
-        const res = await fetch(`/api/eod?symbol=${ticker}`);
-        const data = await res.json();
+// async function getEodHistorical(ticker) {
+//     try {
+//         const res = await fetch(`/api/eod?symbol=${ticker}`);
+//         const data = await res.json();
 
-        if (!Array.isArray(data) || data.length === 0) return [];
+//         if (!Array.isArray(data) || data.length === 0) return [];
 
-        // ⭐ Detect 1-year warning BEFORE mapping
-        const hasWarning = data[data.length - 1]?.warning ? true : false;
+//         // ⭐ Detect 1-year warning BEFORE mapping
+//         const hasWarning = data[data.length - 1]?.warning ? true : false;
 
-        // Convert to your existing format
-        const history = data
-            .map(d => ({
-                date: new Date(d.date),
-                close: parseFloat(d.adjusted_close ?? d.close),
-                warning: d.warning ?? null   // ⭐ preserve warning
-            }))
-            .filter(d => !isNaN(d.close))
-            .sort((a, b) => a.date - b.date); // oldest → newest
+//         // Convert to your existing format
+//         const history = data
+//             .map(d => ({
+//                 date: new Date(d.date),
+//                 close: parseFloat(d.adjusted_close ?? d.close),
+//                 warning: d.warning ?? null   // ⭐ preserve warning
+//             }))
+//             .filter(d => !isNaN(d.close))
+//             .sort((a, b) => a.date - b.date); // oldest → newest
 
-        // ⭐ Attach the warning to the LAST entry so handleHistoricalData sees it
-        if (hasWarning) {
-            history[history.length - 1].warning = data[data.length - 1].warning;
-        }
+//         // ⭐ Attach the warning to the LAST entry so handleHistoricalData sees it
+//         if (hasWarning) {
+//             history[history.length - 1].warning = data[data.length - 1].warning;
+//         }
 
-        return history;
-    } catch (err) {
-        console.error("EODHD fetch error:", err);
-        return [];
-    }
-}
+//         return history;
+//     } catch (err) {
+//         console.error("EODHD fetch error:", err);
+//         return [];
+//     }
+// }
 
 
 /* --------------------------------------------------

@@ -369,3 +369,20 @@ main {
     gap: 0.4rem;
     font-size: 0.85rem;
 }
+
+.warning-box
+{
+    background: #fff3cd;
+    border: 1px solid #ffeeba;
+    padding: 16px;
+    border-radius: 6px;
+    margin-top: 12px;
+    margin-bottom: 16px;
+}
+
+.radio-option
+{
+    display: block;
+    margin-top: 8px;
+    font-size: 0.95rem;
+}

@@ -124,25 +124,33 @@ async function getEodHistorical(ticker) {
 
 function handleHistoricalData(rawData) {
     const warningBox = document.getElementById("oneYearWarning");
-    const useOneYear = document.getElementById("useOneYear");
+    const choice = document.querySelector("input[name='oneYearChoice']:checked");
 
     const last = rawData?.[rawData.length - 1];
 
-    // EODHD free tier includes:  { warning: "Data is limited by one year..." }
     if (last?.warning) {
         warningBox.style.display = "block";
 
-        // User must explicitly opt in
-        if (!useOneYear.checked) {
-            console.warn("Simulation halted: only 1 year of data available.");
+        // If user chooses default (long-term average), stop simulation
+        if (choice?.value === "default") {
+            console.warn("Using long-term average instead of 1-year data.");
             return null;
         }
+
+        // If user chooses 1-year data, continue
+        if (choice?.value === "oneyear") {
+            console.warn("Proceeding with 1-year data.");
+            return rawData;
+        }
+
+        return null;
     } else {
         warningBox.style.display = "none";
     }
 
     return rawData;
 }
+
 
 /* --------------------------------------------------
  *  FINANCIAL PERFORMANCE (STOCK/BOND RETURNS)

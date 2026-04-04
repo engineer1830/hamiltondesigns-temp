@@ -82,18 +82,24 @@
                             <span class="label-text">Tickers (comma-separated)</span>
                             <input type="text" id="tickers" placeholder="e.g., VTI, BND">
                         </label>
+
+                        <div id="oneYearWarning" class="warning-box" style="display:none;">
+                            <strong>⚠️ Only 1 year of historical data is available for this ticker.</strong>
                         
-                        <div id="oneYearWarning" class="one-year-warning" style="display:none;">
-                            <p>
-                                ⚠️ Only <strong>1 year</strong> of historical data is available for this ticker.
-                            </p>
-                            <label class="one-year-checkbox">
-                                <input type="checkbox" id="useOneYear">
-                                Proceed using 1-year data
+                            <p>How would you like to proceed?</p>
+                        
+                            <label class="radio-option">
+                                <input type="radio" name="oneYearChoice" value="default" checked>
+                                Use long‑term average return instead (recommended)
+                            </label>
+                        
+                            <label class="radio-option">
+                                <input type="radio" name="oneYearChoice" value="oneyear">
+                                Use 1‑year data anyway
                             </label>
                         </div>
                         
-
+                        
                         <label>
                             <span class="label-text">Annual salary growth % <span class="required">*</span></span>
                             <input type="number" id="salaryGrowth" value="2" step="0.1" required>

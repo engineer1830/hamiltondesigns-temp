@@ -64,18 +64,6 @@ function computeAnnualReturn(history) {
     const msPerYear = 1000 * 60 * 60 * 24 * 365.25;
     const years = (history[history.length - 1].date - history[0].date) / msPerYear;
 
-
-    // ⭐ Add these logs for debugging
-    console.log("---- RETURN DEBUG ----");
-    console.log("First entry:", history[0]);
-    console.log("Last entry:", history[history.length - 1]);
-    console.log("Years spanned:", years);
-    console.log("Computed CAGR:", Math.pow(last / first, 1 / years) - 1);
-    console.log("----------------------");
-
-    if (years <= 0) return null;
-    // End debug content
-
     return Math.pow(last / first, 1 / years) - 1;
 }
 
@@ -161,7 +149,7 @@ async function financialPerformance(tickers) {
     const bondReturns = [];
 
     for (const t of tickers) {
-        let hist = await getEodHistorical(t);
+        let hist = await getYahooHistorical(t);
 
         // ⭐ Apply the warning logic here
         hist = handleHistoricalData(hist);
@@ -485,6 +473,16 @@ function monteCarloSimulation({
         allResults: results
     };
 }
+
+/* --------------------------------------------------
+ *  DATA FETCHING HELPERS
+-------------------------------------------------- */
+
+async function getYahooHistorical(ticker) {
+    const response = await fetch(`/api/yahoo?ticker=${ticker}`);
+    return await response.json();
+}
+
 /* --------------------------------------------------
  *  FORMATTING HELPERS
 -------------------------------------------------- */
@@ -510,6 +508,7 @@ function formatLegacyTableReal(legacyDataReal) {
     }
     return out;
 }
+
 /* --------------------------------------------------
  *  CHARTS
 -------------------------------------------------- */

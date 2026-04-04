@@ -71,7 +71,9 @@ function computeAnnualReturn(history) {
 
 async function getYahooHistorical(ticker) {
     try {
-        const url = `https://cors.isomorphic-git.org/https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=max`;
+        const base = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=max`;
+        const url = `https://api.allorigins.win/raw?url=${encodeURIComponent(base)}`;
+
         const res = await fetch(url);
         const data = await res.json();
 

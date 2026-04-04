@@ -51,6 +51,10 @@ function formatNumberInput(input) {
     input.value = Number(raw).toLocaleString();
 }
 
+const BOND_TICKERS = [
+    "FXNAX", "BND", "AGG", "IEF", "SHY", "LQD", "VBTLX", "BNDX", "TIP"
+];
+
 /* --------------------------------------------------
  *  FINANCIAL DATA (YAHOO FINANCE)
 -------------------------------------------------- */

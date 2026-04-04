@@ -58,10 +58,10 @@ const BOND_TICKERS = [
 function computeAnnualReturn(history) {
     if (history.length < 2) return null;
 
-    const first = history[history.length - 1].close;
-    const last = history[0].close;
+    const first = history[0].close;                     // oldest price
+    const last = history[history.length - 1].close;    // newest price
 
-    const years = history.length / 252;
+    const years = history.length / 252; // daily → years
     return Math.pow(last / first, 1 / years) - 1;
 }
 

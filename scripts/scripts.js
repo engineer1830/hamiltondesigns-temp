@@ -70,14 +70,18 @@ function getPhasesForAge(age) {
         .sort((a, b) => a.startAge - b.startAge);
 }
 
-document.getElementById("ageInput").addEventListener("input", e => {
-    const age = parseInt(e.target.value, 10);
+document.addEventListener("DOMContentLoaded", () => {
+    const ageInput = document.getElementById("ageInput");
+    if (ageInput) {
+        ageInput.addEventListener("input", e => {
+            const age = parseInt(e.target.value, 10);
+            localStorage.setItem("phaseAge", age);
 
-    localStorage.setItem("phaseAge", age);
-
-    if (!isNaN(age)) {
-        const list = getPhasesForAge(age);
-        createPhaseCard(list);
+            if (!isNaN(age)) {
+                const list = getPhasesForAge(age);
+                createPhaseCard(list);
+            }
+        });
     }
 });
 

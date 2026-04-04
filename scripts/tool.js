@@ -55,13 +55,23 @@ const BOND_TICKERS = [
     "FXNAX", "BND", "AGG", "IEF", "SHY", "LQD", "VBTLX", "BNDX", "TIP"
 ];
 
+function computeAnnualReturn(history) {
+    if (history.length < 2) return null;
+
+    const first = history[history.length - 1].close;
+    const last = history[0].close;
+
+    const years = history.length / 252;
+    return Math.pow(last / first, 1 / years) - 1;
+}
+
 /* --------------------------------------------------
  *  FINANCIAL DATA (YAHOO FINANCE)
 -------------------------------------------------- */
 
 async function getYahooHistorical(ticker) {
     try {
-        const url = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=max`;
+        const url = `https://cors.isomorphic-git.org/https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=max`;
         const res = await fetch(url);
         const data = await res.json();
 
@@ -73,7 +83,6 @@ async function getYahooHistorical(ticker) {
 
         if (!timestamps || !closes) return [];
 
-        // Convert to your existing format
         const history = timestamps.map((ts, i) => ({
             date: new Date(ts * 1000),
             close: closes[i]

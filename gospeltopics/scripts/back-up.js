@@ -38,7 +38,6 @@ async function loadWritings() {
     }
 }
 
-
 /* ============================================================
    BUILD SIDEBAR (with collapsible categories)
 ============================================================ */
@@ -88,7 +87,6 @@ function buildSidebar() {
     });
 }
 
-
 /* ============================================================
    COLLAPSE / EXPAND ALL BUTTON
 ============================================================ */
@@ -110,6 +108,7 @@ if (collapseBtn) {
         collapseBtn.textContent = allCollapsed ? "Collapse All" : "Expand All";
     });
 }
+
 
 
 /* ============================================================
@@ -328,184 +327,92 @@ async function loadMarkdownIfNeeded() {
     }
 }
 
+// Very simple markdown converter (headings + paragraphs)
+function markdownToHtml(md) {
+    const lines = md.split("\n");
+    return lines
+        .map(line => {
+            if (line.startsWith("### ")) return `<h3>${line.slice(4)}</h3>`;
+            if (line.startsWith("## ")) return `<h2>${line.slice(3)}</h2>`;
+            if (line.startsWith("# ")) return `<h1>${line.slice(2)}</h1>`;
+            if (line.trim() === "") return "";
+            return `<p>${line}</p>`;
+        })
+        .join("\n");
+}
 
 /* ============================================================
-   RICH MARKDOWN CONVERTER
-   - Headings (#, ##, ###)
-   - Paragraphs
-   - Bold (**text**)
-   - Italics (*text*)
-   - Blockquotes (> text)
-   - Unordered lists (- item, * item)
-   - Ordered lists (1. item)
-   - Markdown links [text](url)
-   - Auto-linked bare URLs
-   - Scripture auto-linking (Book 1:2–3)
+   MARKDOWN LOADER (for individual writing pages) - replaced below
+============================================================ */
+// async function loadMarkdownIfNeeded() {
+//     const container = document.getElementById("markdownContent");
+//     if (!container) return;
+
+//     const current = window.location.pathname;
+//     const match = writings.find(w => current.endsWith(w.url));
+//     if (!match || !match.mdUrl) return;
+
+//     try {
+//         const res = await fetch("/hamiltondesigns/gospeltopics/" + match.mdUrl);
+//         if (!res.ok) {
+//             throw new Error("Markdown file not found: " + match.mdUrl);
+//         }
+
+//         const text = await res.text();
+//         container.innerHTML = markdownToHtml(text);
+//     } catch (err) {
+//         console.error("Error loading markdown:", err);
+//     }
+// }
+
+/* ============================================================
+   SIMPLE MARKDOWN CONVERTER (headings, paragraphs, links)
 ============================================================ */
 function markdownToHtml(md) {
     const lines = md.split("\n");
-    const html = [];
-    let inList = false;
-    let listType = null; // "ul" or "ol"
 
-    function closeListIfOpen() {
-        if (inList && listType) {
-            html.push(`</${listType}>`);
-            inList = false;
-            listType = null;
-        }
-    }
+    return lines
+        .map(line => {
+            // Headings
+            if (line.startsWith("### ")) return "<h3>" + line.slice(4) + "</h3>";
+            if (line.startsWith("## ")) return "<h2>" + line.slice(3) + "</h2>";
+            if (line.startsWith("# ")) return "<h1>" + line.slice(2) + "</h1>";
 
-    function applyInlineFormatting(text) {
-        // --- Markdown links: [text](url) ---
-        while (text.includes("[") && text.includes("](") && text.includes(")")) {
-            let startText = text.indexOf("[");
-            let endText = text.indexOf("]", startText);
-            let startUrl = text.indexOf("(", endText);
-            let endUrl = text.indexOf(")", startUrl);
+            // Markdown links: [text](url)
+            if (line.includes("](")) {
+                const startText = line.indexOf("[") + 1;
+                const endText = line.indexOf("]");
+                const startUrl = line.indexOf("(", endText) + 1;
+                const endUrl = line.indexOf(")", startUrl);
 
-            if (startText === -1 || endText === -1 || startUrl === -1 || endUrl === -1) break;
-
-            let label = text.substring(startText + 1, endText);
-            let url = text.substring(startUrl + 1, endUrl);
-
-            let html = '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + label + '</a>';
-            text = text.substring(0, startText) + html + text.substring(endUrl + 1);
-        }
-
-        // --- Auto-link bare URLs ---
-        let words = text.split(" ");
-        for (let i = 0; i < words.length; i++) {
-            if (words[i].startsWith("http://") || words[i].startsWith("https://")) {
-                let url = words[i];
-                words[i] = '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + url + '</a>';
+                if (startText > 0 && endText > startText && startUrl > 0 && endUrl > startUrl) {
+                    const textPart = line.substring(startText, endText);
+                    const urlPart = line.substring(startUrl, endUrl);
+                    const htmlLink = '<a href="' + urlPart + '" target="_blank" rel="noopener noreferrer">' + textPart + '</a>';
+                    line = line.replace(line.substring(line.indexOf("["), endUrl + 1), htmlLink);
+                }
             }
-        }
-        text = words.join(" ");
 
-        // --- Scripture auto-linking ---
-        let parts = text.split(" ");
-        for (let i = 0; i < parts.length - 1; i++) {
-            let book = parts[i];
-            let ref = parts[i + 1];
-
-            if (ref.includes(":")) {
-                let url = "https://www.churchofjesuschrist.org/study/scriptures/search?query="
-                    + encodeURIComponent(book + " " + ref);
-
-                parts[i] =
-                    '<a href="' + url + '" target="_blank" rel="noopener noreferrer">'
-                    + book + " " + ref + '</a>';
-
-                parts.splice(i + 1, 1);
+            // Auto-link bare URLs
+            if (line.includes("http://") || line.includes("https://")) {
+                const parts = line.split(" ");
+                line = parts
+                    .map(word => {
+                        if (word.startsWith("http://") || word.startsWith("https://")) {
+                            return '<a href="' + word + '" target="_blank" rel="noopener noreferrer">' + word + '</a>';
+                        }
+                        return word;
+                    })
+                    .join(" ");
             }
-        }
-        text = parts.join(" ");
 
-        // --- Bold (**text**) ---
-        while (text.includes("**")) {
-            let start = text.indexOf("**");
-            let end = text.indexOf("**", start + 2);
-            if (end === -1) break;
-            let inner = text.substring(start + 2, end);
-            text = text.substring(0, start)
-                + "<strong>" + inner + "</strong>"
-                + text.substring(end + 2);
-        }
+            // Empty line → no paragraph
+            if (line.trim() === "") return "";
 
-        // --- Italics (*text*) ---
-        while (text.includes("*")) {
-            let start = text.indexOf("*");
-            let end = text.indexOf("*", start + 1);
-            if (end === -1) break;
-            let inner = text.substring(start + 1, end);
-            text = text.substring(0, start)
-                + "<em>" + inner + "</em>"
-                + text.substring(end + 1);
-        }
-
-        return text;
-    }   // <-- THIS is the missing brace you needed
-
-
-    // ---------------------------------------------------------
-    // Now the big loop is correctly INSIDE markdownToHtml
-    // ---------------------------------------------------------
-    for (let rawLine of lines) {
-        let line = rawLine.replace(/\r$/, "");
-
-        // Blank line → close lists and skip
-        if (line.trim() === "") {
-            closeListIfOpen();
-            continue;
-        }
-
-        // Headings
-        const h3 = line.match(/^###\s+(.*)/);
-        const h2 = line.match(/^##\s+(.*)/);
-        const h1 = line.match(/^#\s+(.*)/);
-
-        if (h3) {
-            closeListIfOpen();
-            html.push(`<h3>${applyInlineFormatting(h3[1])}</h3>`);
-            continue;
-        }
-        if (h2) {
-            closeListIfOpen();
-            html.push(`<h2>${applyInlineFormatting(h2[1])}</h2>`);
-            continue;
-        }
-        if (h1) {
-            closeListIfOpen();
-            html.push(`<h1>${applyInlineFormatting(h1[1])}</h1>`);
-            continue;
-        }
-
-        // Blockquotes
-        const bq = line.match(/^>\s?(.*)/);
-        if (bq) {
-            closeListIfOpen();
-            html.push(`<blockquote>${applyInlineFormatting(bq[1])}</blockquote>`);
-            continue;
-        }
-
-        // Ordered list: "1. item"
-        const ol = line.match(/^\d+\.\s+(.*)/);
-        if (ol) {
-            if (!inList || listType !== "ol") {
-                closeListIfOpen();
-                html.push("<ol>");
-                inList = true;
-                listType = "ol";
-            }
-            html.push(`<li>${applyInlineFormatting(ol[1])}</li>`);
-            continue;
-        }
-
-        // Unordered list: "- item" or "* item"
-        const ul = line.match(/^[-*]\s+(.*)/);
-        if (ul) {
-            if (!inList || listType !== "ul") {
-                closeListIfOpen();
-                html.push("<ul>");
-                inList = true;
-                listType = "ul";
-            }
-            html.push(`<li>${applyInlineFormatting(ul[1])}</li>`);
-            continue;
-        }
-
-        // Default paragraph
-        closeListIfOpen();
-        html.push(`<p>${applyInlineFormatting(line)}</p>`);
-    }
-
-    // Close any open list at the end
-    if (inList && listType) {
-        html.push(`</${listType}>`);
-    }
-
-    return html.join("\n");
+            // Default paragraph
+            return "<p>" + line + "</p>";
+        })
+        .join("\n");
 }
 
 /* ============================================================

@@ -144,6 +144,12 @@ body.dark a:focus
     color: #000;
 }
 
+/* Restore sidebar category color */
+.sidebar .nav-category
+{
+    color: #000;
+}
+
 /* Disable hero image + overlay in dark mode */
 body.dark .layout
 {

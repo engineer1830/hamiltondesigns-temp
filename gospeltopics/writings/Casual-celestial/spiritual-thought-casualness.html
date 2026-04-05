@@ -3,37 +3,70 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spiritual Thought - Casualness</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/hamiltondesigns/gospeltopics/styles.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles/gospeltopics.css">
 </head>
 
 <body class="writing-page">
-    <div class="layout">
-        <aside class="sidebar">
-            <button id="collapseAllBtn" class="collapse-btn">Collapse All</button>
-            <input id="searchInput" type="text" placeholder="Search topics..." class="sidebar-search">
-            <nav id="sidebarNav" class="sidebar-nav"></nav>
-        </aside>
 
-        <main class="content">
-            <header class="page-header">
-                <h1>Spiritual Thought - Casualness</h1>
-                <p class="meta">(11/12/23 EQ Presidency)</p>
+    <!-- ========================= -->
+    <!--        TOP HEADER         -->
+    <!-- ========================= -->
+    <header class="top-header">
+        <a href="/hamiltondesigns/gospeltopics/" class="home-link">← Back to Home</a>
+
+        <label class="dark-toggle">
+            <input type="checkbox" id="darkModeToggle">
+            <span>Dark Mode</span>
+        </label>
+    </header>
+
+    <!-- ========================= -->
+    <!--        PAGE LAYOUT        -->
+    <!-- ========================= -->
+    <div class="layout">
+
+        <!-- ========================= -->
+        <!--          SIDEBAR          -->
+        <!-- ========================= -->
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h1>Writings</h1>
+                <input type="search" id="searchInput" placeholder="Search…" aria-label="Search writings">
+                <button id="collapseAllBtn" class="collapse-all">Collapse All</button>
             </header>
 
-            <article id="markdownContent" class="markdown-body">
-                <!-- Markdown content will be injected here by markdownToHtml(...) -->
-            </article>
+            <nav class="sidebar-nav" id="sidebarNav">
+                <!-- JS populates this -->
+            </nav>
+        </aside>
 
-            <section class="related-section">
+        <!-- ========================= -->
+        <!--        MAIN CONTENT       -->
+        <!-- ========================= -->
+        <main class="content">
+
+            <!-- Markdown content loads here -->
+            <article id="markdownContent"></article>
+
+            <!-- Related writings -->
+            <section class="related">
                 <h2>Related Writings</h2>
                 <div id="relatedWritings"></div>
             </section>
+
         </main>
+
     </div>
 
-    <script src="/hamiltondesigns/gospeltopics/gospeltopics.js"></script>
+    <!-- ========================= -->
+    <!--        JAVASCRIPT         -->
+    <!-- ========================= -->
+    <script src="/hamiltondesigns/gospeltopics/scripts/gospeltopics.js"></script>
+
 </body>
 
 </html>

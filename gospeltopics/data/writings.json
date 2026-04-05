@@ -231,5 +231,20 @@
             "family",
             "Eyring"
         ]
+    },
+    {
+        "title": "Refiner's Fire",
+        "category": "Challenges",
+        "url": "writings/Challenges/refiners-fire.html",
+        "mdUrl": "content/Challenges/refiners-fire.md",
+        "keywords": [
+            "refiner's fire",
+            "silver",
+            "cupellation",
+            "metallurgy",
+            "trials",
+            "purification",
+            "Packer"
+        ]
     }
 ]

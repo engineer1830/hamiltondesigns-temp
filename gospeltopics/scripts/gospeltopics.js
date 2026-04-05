@@ -11,7 +11,7 @@ const pageSize = 9; // cards per page
 ============================================================ */
 async function loadWritings() {
     try {
-        const response = await fetch("/hamiltondesigns/gospeltopics/writings.json");
+        const response = await fetch("/hamiltondesigns/gospeltopics/data/writings.json");
 
         if (!response.ok) {
             throw new Error("Failed to load writings.json");

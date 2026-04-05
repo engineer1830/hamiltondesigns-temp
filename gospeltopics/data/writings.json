@@ -248,18 +248,19 @@
         ]
     },
     {
-        "title": "Dave Pack’s Funeral",
+        "title": "Dave Pack's Funeral",
         "category": "Challenges",
+        "url": "writings/Challenges/dave-packs-funeral.html",
+        "mdUrl": "content/Challenges/dave-packs-funeral.md",
         "keywords": [
             "funeral",
             "family",
             "drama",
-            "estate",
             "siblings",
+            "estate",
             "grief",
-            "stories"
-        ],
-        "url": "writings/Challenges/dave-packs-funeral.html",
-        "mdUrl": "content/Challenges/dave-packs-funeral.md"
+            "stories",
+            "Pack"
+        ]
     }
 ]

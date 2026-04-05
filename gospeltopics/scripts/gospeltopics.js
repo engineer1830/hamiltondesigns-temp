@@ -12,18 +12,32 @@ const pageSize = 9; // cards per page
 async function loadWritings() {
     try {
         const response = await fetch("/hamiltondesigns/gospeltopics/writings.json");
+
+        if (!response.ok) {
+            throw new Error("Failed to load writings.json");
+        }
+
         writings = await response.json();
 
         buildSidebar();
-        createCards(paginate(writings, currentPage, pageSize));
-        setupPaginationControls();
+
+        // Homepage only
+        if (document.body.classList.contains("homepage")) {
+            createCards(paginate(writings, currentPage, pageSize));
+            setupPaginationControls();
+        }
+
         highlightActiveLink();
+
+        // Writing page only
         loadMarkdownIfNeeded();
         renderRelatedWritings();
+
     } catch (err) {
         console.error("Error loading writings.json:", err);
     }
 }
+
 
 
 /* ============================================================
@@ -273,7 +287,11 @@ async function loadMarkdownIfNeeded() {
     if (!match || !match.mdUrl) return;
 
     try {
-        const res = await fetch(match.mdUrl);
+        const res = await fetch("/hamiltondesigns/gospeltopics/" + match.mdUrl);
+        if (!res.ok) {
+            throw new Error("Markdown file not found: " + match.mdUrl);
+        }
+
         const text = await res.text();
         container.innerHTML = markdownToHtml(text);
     } catch (err) {

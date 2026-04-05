@@ -611,8 +611,9 @@ a:focus
     text-decoration-thickness: 2px;
     text-underline-offset: 3px;
 }
+
 /* Related writings override — must be last */
-.related #relatedWritings a
+body:not(.dark) .related #relatedWritings a
 {
     color: #000 !important;
 }

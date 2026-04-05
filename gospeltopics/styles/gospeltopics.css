@@ -149,6 +149,11 @@ body.dark a:focus
 {
     color: #000;
 }
+/* Restore sidebar main title color */
+.sidebar h1
+{
+    color: #000;
+}
 
 /* Disable hero image + overlay in dark mode */
 body.dark .layout

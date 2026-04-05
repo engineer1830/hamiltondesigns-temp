@@ -23,7 +23,7 @@ async function loadWritings() {
 
         // Homepage only
         if (document.body.classList.contains("homepage")) {
-            createCards(paginate(writings, currentPage, pageSize));
+            buildCards(paginate(writings, currentPage, pageSize));
             setupPaginationControls();
         }
 
@@ -38,11 +38,6 @@ async function loadWritings() {
     }
 }
 
-
-
-/* ============================================================
-   BUILD SIDEBAR (with collapsible categories)
-============================================================ */
 /* ============================================================
    BUILD SIDEBAR (with collapsible categories)
 ============================================================ */
@@ -174,26 +169,29 @@ function fuzzyScore(text, query) {
 
 
 /* ============================================================
-   CARD GENERATOR
+   BUILD HOMEPAGE CARDS
 ============================================================ */
-function createCards(list) {
-    const grid = document.getElementById("cardGrid");
-    if (!grid) return;
+function buildCards(filteredWritings) {
+    const cardGrid = document.getElementById("cardGrid");
+    if (!cardGrid) return;
 
-    grid.innerHTML = "";
+    cardGrid.innerHTML = "";
 
-    list.forEach(item => {
+    filteredWritings.forEach(item => {
         const card = document.createElement("article");
         card.classList.add("card");
 
+        // Entire card is now a clickable link
         card.innerHTML = `
-            <h3>${item.title}</h3>
-            <p class="category">${item.category}</p>
-            <p class="keywords">${item.keywords.join(", ")}</p>
-            <a href="${item.url}" class="read-link">Read →</a>
+            <a href="/hamiltondesigns/gospeltopics/${item.url}" class="card-link">
+                <h3>${item.title}</h3>
+                <p class="category">${item.category}</p>
+                <p class="keywords">${item.keywords.join(", ")}</p>
+                <span class="read-link">Read →</span>
+            </a>
         `;
 
-        grid.appendChild(card);
+        cardGrid.appendChild(card);
     });
 }
 
@@ -223,7 +221,7 @@ function setupPaginationControls() {
             currentPage = p;
             const query = document.getElementById("cardSearch")?.value || "";
             const filtered = filterList(query);
-            createCards(paginate(filtered, currentPage, pageSize));
+            buildCards(paginate(filtered, currentPage, pageSize));
             setupPaginationControls();
         });
         container.appendChild(btn);
@@ -241,7 +239,7 @@ function setupCardSearch() {
     input.addEventListener("input", () => {
         currentPage = 1;
         const filtered = filterList(input.value);
-        createCards(paginate(filtered, currentPage, pageSize));
+        buildCards(paginate(filtered, currentPage, pageSize));
         setupPaginationControls();
     });
 }
@@ -277,7 +275,7 @@ function setupCategoryButtons() {
             const query = document.getElementById("cardSearch")?.value || "";
             currentPage = 1;
             const filtered = filterList(query, category);
-            createCards(paginate(filtered, currentPage, pageSize));
+            buildCards(paginate(filtered, currentPage, pageSize));
             setupPaginationControls();
         });
     });

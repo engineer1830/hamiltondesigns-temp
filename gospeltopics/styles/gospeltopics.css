@@ -512,6 +512,21 @@ body.dark #pagination button.active
     color: #222;
 }
 
+/* GLOBAL LINK RESET */
+a,
+a:link,
+a:visited
+{
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus
+{
+    text-decoration: underline;
+}
+
 /* ============================================================
    MARKDOWN CONTENT
 ============================================================ */
@@ -562,21 +577,6 @@ body.dark .related a
     color: #9bbcff;
 }
 
-/* GLOBAL LINK RESET */
-a,
-a:link,
-a:visited
-{
-    color: inherit;
-    text-decoration: none;
-}
-
-a:hover,
-a:focus
-{
-    text-decoration: underline;
-}
-
 /* FORCE neutral link colors in LIGHT MODE — MARKDOWN ONLY */
 body:not(.dark) #markdownContent a,
 body:not(.dark) #markdownContent a:link,
@@ -613,6 +613,17 @@ a:focus
 }
 
 /* Related writings override — must be last */
+body:not(.dark) .related #relatedWritings a
+{
+    color: #000 !important;
+}
+
+body.dark .related #relatedWritings a
+{
+    color: #ccc !important;
+}
+
+/* FINAL override for related writings */
 body:not(.dark) .related #relatedWritings a
 {
     color: #000 !important;

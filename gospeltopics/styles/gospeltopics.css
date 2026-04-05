@@ -77,10 +77,10 @@ body.dark .top-header .home-link
    LAYOUT
 ============================================================ */
 
-/* Hero background image behind main content (light mode only) */
+/* Hero background image (light mode only) */
 .layout
 {
-    background-image: url("/hamiltondesigns/gospeltopics/images/scriptures.jpeg");
+    background-image: url("/hamiltondesigns/gospeltopics/images/gilbert.jpeg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -94,6 +94,7 @@ body.dark .top-header .home-link
     z-index: 1;
 }
 
+/* Light-mode overlay */
 .layout::before
 {
     content: "";
@@ -143,7 +144,7 @@ body.dark .layout::before
     z-index: 2;
 }
 
-/* Sidebar overlay for readability */
+/* Sidebar overlay */
 .sidebar::before
 {
     content: "";
@@ -154,14 +155,14 @@ body.dark .layout::before
     z-index: 0;
 }
 
-/* Ensure sidebar content sits above overlay */
+/* Sidebar content above overlay */
 .sidebar>*
 {
     position: relative;
     z-index: 1;
 }
 
-/* Dark mode sidebar: no image, no overlay */
+/* Dark mode sidebar */
 body.dark .sidebar
 {
     background-image: none;
@@ -187,7 +188,7 @@ body.dark .sidebar::before
     margin-bottom: 1rem;
 }
 
-/* Mobile-friendly search inputs */
+/* Search inputs */
 .sidebar-header input[type="search"],
 #cardSearch
 {
@@ -197,15 +198,7 @@ body.dark .sidebar::before
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 6px;
-    box-sizing: border-box;
     transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-.sidebar,
-.content
-{
-    position: relative;
-    z-index: 2;
 }
 
 body.dark .sidebar-header input[type="search"]
@@ -215,7 +208,7 @@ body.dark .sidebar-header input[type="search"]
     color: #eee;
 }
 
-/* Collapse/Expand button */
+/* Collapse button */
 .collapse-all
 {
     padding: 0.4rem 0.6rem;
@@ -234,7 +227,6 @@ body.dark .sidebar-header input[type="search"]
     padding: 0.5rem 0.25rem;
     color: #444;
     cursor: pointer;
-    transition: color 0.3s ease;
 }
 
 body.dark .nav-category
@@ -242,14 +234,12 @@ body.dark .nav-category
     color: #ddd;
 }
 
-.nav-category:hover,
-.nav-category:active
+.nav-category:hover
 {
     background: rgba(0, 0, 0, 0.05);
 }
 
-body.dark .nav-category:hover,
-body.dark .nav-category:active
+body.dark .nav-category:hover
 {
     background: rgba(255, 255, 255, 0.1);
 }
@@ -279,7 +269,6 @@ body.dark .nav-category:active
     padding: 0.25rem 0;
     display: block;
     border-radius: 4px;
-    transition: background 0.2s ease, color 0.2s ease;
 }
 
 body.dark .nav-section a
@@ -309,11 +298,17 @@ body.dark .nav-section a.active
     padding: 2rem 3rem;
     overflow-y: auto;
     background: transparent;
+    position: relative;
+    z-index: 2;
 }
 
+/* TRUE dark mode content area */
 body.dark .content
 {
     background: #1e1e1e;
+    border-left: 1px solid #333;
+    /* Option A subtle borders */
+    border-top: 1px solid #333;
 }
 
 .content article
@@ -355,10 +350,12 @@ body.dark .content
     transition: background 0.3s ease, border-color 0.3s ease;
 }
 
+/* Dark mode cards */
 body.dark .card
 {
-    background: #2a2a2a;
-    border-color: #444;
+    background: #242424;
+    border-color: #333;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .card h3
@@ -370,7 +367,6 @@ body.dark .card
 {
     font-size: 0.9rem;
     color: #666;
-    margin-bottom: 0.5rem;
 }
 
 body.dark .card .category
@@ -382,7 +378,6 @@ body.dark .card .category
 {
     font-size: 0.8rem;
     color: #888;
-    margin-bottom: 1rem;
 }
 
 body.dark .card .keywords
@@ -428,14 +423,12 @@ body.dark .card .read-link
     background: white;
     border-radius: 4px;
     cursor: pointer;
-    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 #pagination button.active
 {
     background: #1a73e8;
     color: white;
-    border-color: #1a73e8;
 }
 
 body.dark #pagination button

@@ -1,4 +1,3 @@
-<!-- test -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,21 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discipleship</title>
 
+    <!-- Styles -->
     <link rel="stylesheet" href="../../styles/gospeltopics.css">
 </head>
 
-<body class="homepage">
+<body class="writing-page">
+
+    <!-- ========================= -->
+    <!--        TOP HEADER         -->
+    <!-- ========================= -->
     <header class="top-header">
         <a href="/hamiltondesigns/gospeltopics/" class="home-link">← Back to Home</a>
+
+        <label class="dark-toggle">
+            <input type="checkbox" id="darkModeToggle">
+            <span>Dark Mode</span>
+        </label>
     </header>
 
-    <label class="dark-toggle">
-        <input type="checkbox" id="darkModeToggle">
-        <span>Dark Mode</span>
-    </label>
-
+    <!-- ========================= -->
+    <!--        PAGE LAYOUT        -->
+    <!-- ========================= -->
     <div class="layout">
 
+        <!-- ========================= -->
+        <!--          SIDEBAR          -->
+        <!-- ========================= -->
         <aside class="sidebar">
             <header class="sidebar-header">
                 <h1>Writings</h1>
@@ -31,10 +41,15 @@
             <nav class="sidebar-nav" id="sidebarNav"></nav>
         </aside>
 
+        <!-- ========================= -->
+        <!--        MAIN CONTENT       -->
+        <!-- ========================= -->
         <main class="content">
 
+            <!-- Markdown content loads here -->
             <article id="markdownContent"></article>
 
+            <!-- Related writings -->
             <section class="related">
                 <h2>Related Writings</h2>
                 <div id="relatedWritings"></div>
@@ -44,7 +59,11 @@
 
     </div>
 
+    <!-- ========================= -->
+    <!--        JAVASCRIPT         -->
+    <!-- ========================= -->
     <script src="/hamiltondesigns/gospeltopics/scripts/gospeltopics.js"></script>
+
 </body>
 
 </html>

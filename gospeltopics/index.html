@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Gospel Topic Studies - Jesse Hamilton">
-    <title>Jesse Hamilton Gospel Topic Studies and Thoughts</title>
     <meta name="author" content="Jesse Hamilton">
+    <title>Jesse Hamilton Gospel Topic Studies and Thoughts</title>
 
+    <!-- Styles -->
     <link rel="stylesheet" href="styles/gospeltopics.css" media="print" onload="this.media='all'">
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -21,34 +23,34 @@
 </head>
 
 <body class="homepage">
+
+    <!-- ========================= -->
+    <!--        TOP HEADER         -->
+    <!-- ========================= -->
     <header class="top-header">
         <a href="/hamiltondesigns/gospeltopics/" class="home-link">← Back to Home</a>
+
+        <label class="dark-toggle">
+            <input type="checkbox" id="darkModeToggle">
+            <span>Dark Mode</span>
+        </label>
     </header>
 
     <!-- ========================= -->
-    <!--        DARK MODE          -->
+    <!--        PAGE LAYOUT        -->
     <!-- ========================= -->
-    <label class="dark-toggle">
-        <input type="checkbox" id="darkModeToggle">
-        <span>Dark Mode</span>
-    </label>
-
     <div class="layout">
 
         <!-- ========================= -->
-        <!--        SIDEBAR            -->
+        <!--          SIDEBAR          -->
         <!-- ========================= -->
         <aside class="sidebar">
-
             <header class="sidebar-header">
                 <h1>Writings</h1>
                 <input type="search" id="searchInput" placeholder="Search…" aria-label="Search writings">
             </header>
 
-            <nav class="sidebar-nav" id="sidebarNav">
-                <!-- JS will populate this -->
-            </nav>
-
+            <nav class="sidebar-nav" id="sidebarNav"></nav>
         </aside>
 
         <!-- ========================= -->
@@ -56,24 +58,29 @@
         <!-- ========================= -->
         <main class="content" id="contentArea">
 
-            <!-- HOME PAGE CONTENT (only visible on index.html) -->
+            <!-- ========================= -->
+            <!--      HOMEPAGE CONTENT     -->
+            <!-- ========================= -->
             <section id="homeContent">
                 <article>
                     <h1>Jesse's Gospel Studies by Topic</h1>
                     <p>Select a topic from the sidebar to begin reading.</p>
                 </article>
 
-                <!-- CARD SEARCH -->
+                <!-- Card Search -->
                 <input type="search" id="cardSearch" placeholder="Search all writings…">
 
-                <!-- CARD GRID -->
+                <!-- Card Grid -->
                 <section class="card-grid" id="cardGrid"></section>
 
-                <!-- PAGINATION -->
+                <!-- Pagination -->
                 <div id="pagination"></div>
             </section>
 
-            <!-- WRITING PAGE CONTENT (only visible on writing pages) -->
+            <!-- ========================= -->
+            <!--     WRITING PAGE AREA     -->
+            <!-- (JS shows this on writing pages) -->
+            <!-- ========================= -->
             <section id="writingContent">
                 <article id="markdownContent"></article>
 
@@ -87,8 +94,11 @@
 
     </div>
 
+    <!-- ========================= -->
+    <!--        JAVASCRIPT         -->
+    <!-- ========================= -->
     <script src="/hamiltondesigns/gospeltopics/scripts/gospeltopics.js"></script>
-    <footer></footer>
+
 </body>
 
 </html>

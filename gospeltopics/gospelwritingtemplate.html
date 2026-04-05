@@ -10,21 +10,27 @@
     <link rel="stylesheet" href="../../styles/gospeltopics.css">
 </head>
 
-<body>
+<body class="writing-page">
+
+    <!-- ========================= -->
+    <!--        TOP HEADER         -->
+    <!-- ========================= -->
     <header class="top-header">
         <a href="/hamiltondesigns/gospeltopics/" class="home-link">← Back to Home</a>
+
+        <label class="dark-toggle">
+            <input type="checkbox" id="darkModeToggle">
+            <span>Dark Mode</span>
+        </label>
     </header>
 
-    <!-- Dark Mode Toggle -->
-    <label class="dark-toggle">
-        <input type="checkbox" id="darkModeToggle">
-        <span>Dark Mode</span>
-    </label>
-
+    <!-- ========================= -->
+    <!--        PAGE LAYOUT        -->
+    <!-- ========================= -->
     <div class="layout">
 
         <!-- ========================= -->
-        <!--        SIDEBAR            -->
+        <!--          SIDEBAR          -->
         <!-- ========================= -->
         <aside class="sidebar">
             <header class="sidebar-header">
@@ -33,7 +39,7 @@
             </header>
 
             <nav class="sidebar-nav" id="sidebarNav">
-                <!-- JS will populate this -->
+                <!-- JS populates this -->
             </nav>
         </aside>
 
@@ -55,7 +61,9 @@
 
     </div>
 
-    <!-- JS -->
+    <!-- ========================= -->
+    <!--        JAVASCRIPT         -->
+    <!-- ========================= -->
     <script src="/hamiltondesigns/gospeltopics/scripts/gospeltopics.js"></script>
 
 </body>

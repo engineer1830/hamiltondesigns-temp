@@ -246,5 +246,20 @@
             "purification",
             "Packer"
         ]
+    },
+    {
+        "title": "Dave Pack’s Funeral",
+        "category": "Challenges",
+        "keywords": [
+            "funeral",
+            "family",
+            "drama",
+            "estate",
+            "siblings",
+            "grief",
+            "stories"
+        ],
+        "url": "writings/Challenges/dave-packs-funeral.html",
+        "mdUrl": "content/Challenges/dave-packs-funeral.md"
     }
 ]

@@ -55,7 +55,10 @@ function buildSidebar() {
         categories[item.category].push(item);
     });
 
-    Object.keys(categories).forEach(category => {
+    // 🔤 Alphabetize category names
+    const sortedCategories = Object.keys(categories).sort((a, b) => a.localeCompare(b));
+
+    sortedCategories.forEach(category => {
         const section = document.createElement("section");
         section.classList.add("nav-section");
 
@@ -69,6 +72,9 @@ function buildSidebar() {
         header.addEventListener("click", () => {
             list.classList.toggle("collapsed");
         });
+
+        // 🔤 Alphabetize items inside each category
+        categories[category].sort((a, b) => a.title.localeCompare(b.title));
 
         categories[category].forEach(item => {
             const li = document.createElement("li");
@@ -87,6 +93,7 @@ function buildSidebar() {
         nav.appendChild(section);
     });
 }
+
 
 
 /* ============================================================
@@ -225,6 +232,10 @@ function setupPaginationControls() {
             currentPage = p;
             const query = document.getElementById("cardSearch")?.value || "";
             const filtered = filterList(query);
+
+            // 🔤 Sort EVERYTHING alphabetically BEFORE pagination
+            filtered.sort((a, b) => a.title.localeCompare(b.title));
+
             buildCards(paginate(filtered, currentPage, pageSize));
             setupPaginationControls();
         });

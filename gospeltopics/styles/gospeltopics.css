@@ -27,7 +27,6 @@ body.dark
 /* ============================================================
    HEADER
 ============================================================ */
-
 .top-header
 {
     padding: 0.75rem 1rem;
@@ -105,19 +104,30 @@ body.dark .sidebar
     border-color: #444;
 }
 
+.sidebar-header
+{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 .sidebar-header h1
 {
     font-size: 1.4rem;
     margin-bottom: 1rem;
 }
 
-.sidebar-header input[type="search"]
+/* Mobile-friendly search inputs */
+.sidebar-header input[type="search"],
+#cardSearch
 {
+    min-height: 48px;
+    padding: 0.6rem 0.75rem;
+    font-size: 1rem;
     width: 100%;
-    padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 6px;
-    margin-bottom: 1.5rem;
+    box-sizing: border-box;
     transition: background 0.3s ease, border-color 0.3s ease;
 }
 
@@ -128,12 +138,23 @@ body.dark .sidebar-header input[type="search"]
     color: #eee;
 }
 
-/* Collapsible categories */
+/* Collapse/Expand button */
+.collapse-all
+{
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Category headers */
 .nav-category
 {
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
+    padding: 0.5rem 0.25rem;
     color: #444;
     cursor: pointer;
     transition: color 0.3s ease;
@@ -144,15 +165,27 @@ body.dark .nav-category
     color: #ddd;
 }
 
-.nav-section ul
+.nav-category:hover,
+.nav-category:active
+{
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.dark .nav-category:hover,
+body.dark .nav-category:active
+{
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Collapsible lists */
+.sidebar-nav ul
 {
     list-style: none;
     padding-left: 0.5rem;
     margin-bottom: 1rem;
-    transition: max-height 0.3s ease;
 }
 
-.nav-section ul.collapsed
+.sidebar-nav ul.collapsed
 {
     display: none;
 }

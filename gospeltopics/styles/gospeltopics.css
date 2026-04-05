@@ -252,6 +252,40 @@ body.dark .nav-section a.active
     color: #9bbcff;
 }
 
+/* Sidebar background image */
+.sidebar
+{
+    background-image: url("/hamiltondesigns/gospeltopics/images/slc.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* optional, matches hero */
+    position: relative;
+    /* required for overlay */
+    z-index: 2;
+    /* stays above layout overlay */
+}
+
+/* Sidebar overlay for readability */
+.sidebar::before
+{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.65);
+    /* same as hero overlay */
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Ensure sidebar content sits above overlay */
+.sidebar>*
+{
+    position: relative;
+    z-index: 1;
+}
+
 /* ============================================================
    CONTENT AREA
 ============================================================ */

@@ -23,9 +23,14 @@ async function loadWritings() {
 
         // Homepage only
         if (document.body.classList.contains("homepage")) {
+
+            // 🔤 Sort BEFORE the first render
+            writings.sort((a, b) => a.title.localeCompare(b.title));
+
             buildCards(paginate(writings, currentPage, pageSize));
             setupPaginationControls();
         }
+
 
         highlightActiveLink();
 

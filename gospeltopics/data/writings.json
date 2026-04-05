@@ -141,5 +141,20 @@
             "priesthood power",
             "eternity"
         ]
+    },
+    {
+        "title": "Law of Moses",
+        "category": "Law of Moses",
+        "url": "writings/Law-of-Moses/law-of-moses.html",
+        "mdUrl": "content/Law-of-Moses/law-of-moses.md",
+        "keywords": [
+            "Law of Moses",
+            "Christ",
+            "atonement",
+            "symbolism",
+            "covenants",
+            "Israel",
+            "obedience"
+        ]
     }
 ]

@@ -366,5 +366,21 @@
             "power",
             "gospels"
         ]
+    },
+    {
+        "title": "The Gospels and the Book of Mormon",
+        "category": "Christ",
+        "url": "writings/Christ/the-gospels-and-the-book-of-mormon.html",
+        "mdUrl": "content/Christ/the-gospels-and-the-book-of-mormon.md",
+        "keywords": [
+            "gospels",
+            "book of mormon",
+            "matthew",
+            "mark",
+            "luke",
+            "john",
+            "purpose",
+            "title page"
+        ]
     }
 ]

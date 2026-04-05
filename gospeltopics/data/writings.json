@@ -336,5 +336,20 @@
             "mercy",
             "scriptures"
         ]
+    },
+    {
+        "title": "Resurrection",
+        "category": "Christ",
+        "url": "writings/Christ/resurrection.html",
+        "mdUrl": "content/Christ/resurrection.md",
+        "keywords": [
+            "resurrection",
+            "Christ",
+            "Colson",
+            "apostles",
+            "witness",
+            "testimony",
+            "Watergate"
+        ]
     }
 ]

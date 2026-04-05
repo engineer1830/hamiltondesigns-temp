@@ -529,3 +529,18 @@ a:focus
 {
     text-decoration: underline;
 }
+
+/* FORCE neutral link colors in LIGHT MODE */
+body:not(.dark) a,
+body:not(.dark) a:link,
+body:not(.dark) a:visited
+{
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+body:not(.dark) a:hover,
+body:not(.dark) a:focus
+{
+    text-decoration: underline;
+}

@@ -53,6 +53,8 @@ function buildSidebar() {
     nav.innerHTML = "";
 
     const categories = {};
+
+    // Group writings by category
     writings.forEach(item => {
         if (!categories[item.category]) {
             categories[item.category] = [];
@@ -60,17 +62,21 @@ function buildSidebar() {
         categories[item.category].push(item);
     });
 
-    // 🔤 Alphabetize category names
-    const sortedCategories = Object.keys(categories).sort((a, b) => a.localeCompare(b));
+    // Alphabetize category names
+    const sortedCategories = Object.keys(categories).sort((a, b) =>
+        a.localeCompare(b)
+    );
 
     sortedCategories.forEach(category => {
         const section = document.createElement("section");
         section.classList.add("nav-section");
 
+        // Category header
         const header = document.createElement("h2");
         header.classList.add("nav-category");
         header.textContent = category;
 
+        // List of items
         const list = document.createElement("ul");
 
         // Toggle collapse on category click
@@ -78,17 +84,20 @@ function buildSidebar() {
             list.classList.toggle("collapsed");
         });
 
-        // 🔤 Alphabetize items inside each category
-        categories[category].sort((a, b) => a.title.localeCompare(b.title));
+        // Alphabetize items inside each category
+        categories[category].sort((a, b) =>
+            a.title.localeCompare(b.title)
+        );
 
+        // Build list items
         categories[category].forEach(item => {
             const li = document.createElement("li");
             const link = document.createElement("a");
 
             // Absolute path so links work from ANY page
             link.href = "/hamiltondesigns/gospeltopics/" + item.url;
-
             link.textContent = item.title;
+
             li.appendChild(link);
             list.appendChild(li);
         });
@@ -100,16 +109,18 @@ function buildSidebar() {
 }
 
 
-
 /* ============================================================
    COLLAPSE / EXPAND ALL BUTTON
 ============================================================ */
-const collapseBtn = document.getElementById("collapseAllBtn");
+function enableSidebarCollapsing() {
+    const collapseBtn = document.getElementById("collapseAllBtn");
+    if (!collapseBtn) return;
 
-if (collapseBtn) {
     collapseBtn.addEventListener("click", () => {
         const lists = document.querySelectorAll(".sidebar-nav ul");
-        const allCollapsed = [...lists].every(list => list.classList.contains("collapsed"));
+        const allCollapsed = [...lists].every(list =>
+            list.classList.contains("collapsed")
+        );
 
         lists.forEach(list => {
             if (allCollapsed) {
@@ -119,7 +130,9 @@ if (collapseBtn) {
             }
         });
 
-        collapseBtn.textContent = allCollapsed ? "Collapse All" : "Expand All";
+        collapseBtn.textContent = allCollapsed
+            ? "Collapse All"
+            : "Expand All";
     });
 }
 
@@ -132,12 +145,25 @@ function highlightActiveLink() {
     const current = window.location.pathname;
 
     links.forEach(link => {
-        if (current.endsWith(link.getAttribute("href"))) {
+        if (link.getAttribute("href") === current) {
             link.classList.add("active");
+
+            // Auto-expand the category containing the active link
+            const parentList = link.closest("ul");
+            if (parentList) {
+                parentList.classList.remove("collapsed");
+            }
         }
     });
 }
 
+
+/* ============================================================
+   INITIALIZE SIDEBAR
+============================================================ */
+buildSidebar();
+enableSidebarCollapsing();
+highlightActiveLink();
 
 /* ============================================================
    SIDEBAR SEARCH (with fuzzy matching)

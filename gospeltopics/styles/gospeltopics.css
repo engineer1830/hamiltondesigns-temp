@@ -76,11 +76,32 @@ body.dark .top-header .home-link
 /* ============================================================
    LAYOUT
 ============================================================ */
+
+/* Hero background image behind main content */
 .layout
 {
+    background-image: url("/hamiltondesigns/gospeltopics/images/scriptures.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
     display: grid;
     grid-template-columns: 280px 1fr;
     min-height: 100vh;
+
+    position: relative;
+    z-index: 1;
+}
+
+.layout::before
+{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.65);
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* ============================================================
@@ -129,6 +150,13 @@ body.dark .sidebar
     border-radius: 6px;
     box-sizing: border-box;
     transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.sidebar,
+.content
+{
+    position: relative;
+    z-index: 2;
 }
 
 body.dark .sidebar-header input[type="search"]

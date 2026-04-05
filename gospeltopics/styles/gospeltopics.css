@@ -143,13 +143,13 @@ body.dark a:focus
 }
 
 /* Restore related-writing link color */
-.related a
+.content .related #relatedWritings a
 {
     color: #000 !important;
 }
 
 /* Dark mode related-writing links */
-body.dark .related a
+body.dark .content .related #relatedWritings a
 {
     color: #ccc !important;
 }

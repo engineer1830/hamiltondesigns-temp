@@ -43,6 +43,9 @@ async function loadWritings() {
 /* ============================================================
    BUILD SIDEBAR (with collapsible categories)
 ============================================================ */
+/* ============================================================
+   BUILD SIDEBAR (with collapsible categories)
+============================================================ */
 function buildSidebar() {
     const nav = document.getElementById("sidebarNav");
     if (!nav) return;
@@ -66,6 +69,7 @@ function buildSidebar() {
 
         const list = document.createElement("ul");
 
+        // Toggle collapse on category click
         header.addEventListener("click", () => {
             list.classList.toggle("collapsed");
         });
@@ -74,7 +78,7 @@ function buildSidebar() {
             const li = document.createElement("li");
             const link = document.createElement("a");
 
-            // ⭐ FIXED: absolute path so links work from ANY page
+            // Absolute path so links work from ANY page
             link.href = "/hamiltondesigns/gospeltopics/" + item.url;
 
             link.textContent = item.title;
@@ -87,6 +91,30 @@ function buildSidebar() {
         nav.appendChild(section);
     });
 }
+
+/* ============================================================
+   COLLAPSE / EXPAND ALL BUTTON
+============================================================ */
+const collapseBtn = document.getElementById("collapseAllBtn");
+
+if (collapseBtn) {
+    collapseBtn.addEventListener("click", () => {
+        const lists = document.querySelectorAll(".sidebar-nav ul");
+        const allCollapsed = [...lists].every(list => list.classList.contains("collapsed"));
+
+        lists.forEach(list => {
+            if (allCollapsed) {
+                list.classList.remove("collapsed"); // expand all
+            } else {
+                list.classList.add("collapsed"); // collapse all
+            }
+        });
+
+        collapseBtn.textContent = allCollapsed ? "Collapse All" : "Expand All";
+    });
+}
+
+
 
 /* ============================================================
    ACTIVE LINK HIGHLIGHTING

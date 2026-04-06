@@ -681,4 +681,5 @@ document.addEventListener("DOMContentLoaded", () => {
     setupCardSearch();
     setupCategoryButtons();
     setupDarkMode();
+    enableSidebarCollapsing();
 });

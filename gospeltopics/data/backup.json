@@ -2,7 +2,7 @@
     {
         "category": "JosephSmith",
         "title": "Doctrines Restored by Joseph Smith",
-        "slug": "doctrines-restored-by-joseph-smith",
+        "url": "writings/JosephSmith/doctrines-restored.html",
         "mdUrl": "content/JosephSmith/doctrines-restored.md",
         "keywords": [
             "restoration",
@@ -17,7 +17,7 @@
     {
         "category": "Discipline",
         "title": "Anger",
-        "slug": "anger",
+        "url": "writings/Discipline/anger.html",
         "mdUrl": "content/Discipline/anger.md",
         "keywords": [
             "anger",
@@ -32,7 +32,7 @@
     {
         "category": "Casual-celestial",
         "title": "Discipleship-2",
-        "slug": "discipleship-2",
+        "url": "writings/Casual-celestial/discipleship.html",
         "mdUrl": "content/Casual-celestial/discipleship.md",
         "keywords": [
             "discipleship",
@@ -49,7 +49,7 @@
     {
         "category": "Casual-celestial",
         "title": "Good Has Never Been Enough",
-        "slug": "good-has-never-been-enough",
+        "url": "writings/Casual-celestial/good-has-never-been-enough.html",
         "mdUrl": "content/Casual-celestial/good-has-never-been-enough.md",
         "keywords": [
             "good works",
@@ -65,7 +65,7 @@
     {
         "category": "Casual-celestial",
         "title": "August Learnings",
-        "slug": "august-learnings",
+        "url": "writings/Casual-celestial/august-learnings.html",
         "mdUrl": "content/Casual-celestial/august-learnings.md",
         "keywords": [
             "August learnings",
@@ -80,7 +80,7 @@
     {
         "category": "Casual-celestial",
         "title": "Spiritual Thought - Casualness",
-        "slug": "spiritual-thought-casualness",
+        "url": "writings/Casual-celestial/spiritual-thought-casualness.html",
         "mdUrl": "content/Casual-celestial/spiritual-thought-casualness.md",
         "keywords": [
             "casualness",
@@ -94,9 +94,9 @@
         ]
     },
     {
-        "category": "Casual-celestial",
         "title": "Our Choices and Actions and Activities",
-        "slug": "our-choices-and-actions-and-activities",
+        "category": "Casual-celestial",
+        "url": "writings/Casual-celestial/our-choices-actions-activities.html",
         "mdUrl": "content/Casual-celestial/our-choices-actions-activities.md",
         "keywords": [
             "choices",
@@ -109,9 +109,9 @@
         ]
     },
     {
-        "category": "Casual-celestial",
         "title": "I Knew, Yet I Would Not Know",
-        "slug": "i-knew-yet-i-would-not-know",
+        "category": "Casual-celestial",
+        "url": "writings/Casual-celestial/i-knew-yet-i-would-not-know.html",
         "mdUrl": "content/Casual-celestial/i-knew-yet-i-would-not-know.md",
         "keywords": [
             "Alma 10",
@@ -126,9 +126,9 @@
         ]
     },
     {
-        "category": "Law",
         "title": "Law",
-        "slug": "law",
+        "category": "Law",
+        "url": "writings/Law/law.html",
         "mdUrl": "content/Law/law.md",
         "keywords": [
             "law",
@@ -143,9 +143,9 @@
         ]
     },
     {
-        "category": "Law of Moses",
         "title": "Law of Moses",
-        "slug": "law-of-moses",
+        "category": "Law of Moses",
+        "url": "writings/Law-of-Moses/law-of-moses.html",
         "mdUrl": "content/Law-of-Moses/law-of-moses.md",
         "keywords": [
             "Law of Moses",
@@ -158,9 +158,9 @@
         ]
     },
     {
-        "category": "Restoration",
         "title": "Visitation Studies",
-        "slug": "visitation-studies",
+        "category": "Restoration",
+        "url": "writings/Restoration/visitation-studies.html",
         "mdUrl": "content/Restoration/visitation-studies.md",
         "keywords": [
             "Restoration",
@@ -177,9 +177,9 @@
         ]
     },
     {
-        "category": "Social Media",
         "title": "Make Social Media Positive",
-        "slug": "make-social-media-positive",
+        "category": "Social Media",
+        "url": "writings/Social-Media/make-social-media-positive.html",
         "mdUrl": "content/Social-Media/make-social-media-positive.md",
         "keywords": [
             "social media",
@@ -190,9 +190,9 @@
         ]
     },
     {
-        "category": "Teaching",
         "title": "Teaching",
-        "slug": "teaching",
+        "category": "Teaching",
+        "url": "writings/Teaching/teaching.html",
         "mdUrl": "content/Teaching/teaching.md",
         "keywords": [
             "teaching",
@@ -203,9 +203,9 @@
         ]
     },
     {
-        "category": "Challenges",
         "title": "There are No Guarantees",
-        "slug": "there-are-no-guarantees",
+        "category": "Challenges",
+        "url": "writings/Challenges/there-are-no-guarantees.html",
         "mdUrl": "content/Challenges/there-are-no-guarantees.md",
         "keywords": [
             "challenges",
@@ -218,9 +218,9 @@
         ]
     },
     {
-        "category": "Challenges",
         "title": "Brain Tumor",
-        "slug": "brain-tumor",
+        "category": "Challenges",
+        "url": "writings/Challenges/brain-tumor.html",
         "mdUrl": "content/Challenges/brain-tumor.md",
         "keywords": [
             "brain tumor",
@@ -233,9 +233,9 @@
         ]
     },
     {
-        "category": "Challenges",
         "title": "Refiner's Fire",
-        "slug": "refiners-fire",
+        "category": "Challenges",
+        "url": "writings/Challenges/refiners-fire.html",
         "mdUrl": "content/Challenges/refiners-fire.md",
         "keywords": [
             "refiner's fire",
@@ -248,9 +248,9 @@
         ]
     },
     {
-        "category": "Challenges",
         "title": "Dave Pack's Funeral",
-        "slug": "dave-packs-funeral",
+        "category": "Challenges",
+        "url": "writings/Challenges/dave-packs-funeral.html",
         "mdUrl": "content/Challenges/dave-packs-funeral.md",
         "keywords": [
             "funeral",
@@ -264,9 +264,9 @@
         ]
     },
     {
-        "category": "Challenges",
         "title": "Parenting Challenges",
-        "slug": "parenting-challenges",
+        "category": "Challenges",
+        "url": "writings/Challenges/parenting-challenges.html",
         "mdUrl": "content/Challenges/parenting-challenges.md",
         "keywords": [
             "parenting",
@@ -279,9 +279,9 @@
         ]
     },
     {
-        "category": "Challenges",
         "title": "Life Is Like a 3‑Act Play",
-        "slug": "life-is-like-a-3-act-play",
+        "category": "Challenges",
+        "url": "writings/Challenges/life-is-like-a-3-act-play.html",
         "mdUrl": "content/Challenges/life-is-like-a-3-act-play.md",
         "keywords": [
             "3‑act play",
@@ -294,9 +294,9 @@
         ]
     },
     {
-        "category": "Challenges",
         "title": "Parenting Advice From the Scriptures",
-        "slug": "parenting-advice-from-the-scriptures",
+        "category": "Challenges",
+        "url": "writings/Challenges/parenting-advice1.html",
         "mdUrl": "content/Challenges/parenting-advice1.md",
         "keywords": [
             "parenting",
@@ -309,9 +309,9 @@
         ]
     },
     {
-        "category": "Christ",
         "title": "Atonement",
-        "slug": "atonement",
+        "category": "Christ",
+        "url": "writings/Christ/atonement.html",
         "mdUrl": "content/Christ/atonement.md",
         "keywords": [
             "atonement",
@@ -323,9 +323,9 @@
         ]
     },
     {
-        "category": "Christ",
         "title": "Charity",
-        "slug": "charity",
+        "category": "Christ",
+        "url": "writings/Christ/charity.html",
         "mdUrl": "content/Christ/charity.md",
         "keywords": [
             "charity",
@@ -338,9 +338,9 @@
         ]
     },
     {
-        "category": "Christ",
         "title": "Resurrection",
-        "slug": "resurrection",
+        "category": "Christ",
+        "url": "writings/Christ/resurrection.html",
         "mdUrl": "content/Christ/resurrection.md",
         "keywords": [
             "resurrection",
@@ -353,9 +353,9 @@
         ]
     },
     {
-        "category": "Christ",
         "title": "Parables of Jesus in the New Testament",
-        "slug": "parables-of-jesus-in-the-new-testament",
+        "category": "Christ",
+        "url": "writings/Christ/parables-of-jesus-in-the-new-testament.html",
         "mdUrl": "content/Christ/parables-of-jesus-in-the-new-testament.md",
         "keywords": [
             "parables",
@@ -368,9 +368,9 @@
         ]
     },
     {
-        "category": "Christ",
         "title": "The Gospels and the Book of Mormon",
-        "slug": "the-gospels-and-the-book-of-mormon",
+        "category": "Christ",
+        "url": "writings/Christ/the-gospels-and-the-book-of-mormon.html",
         "mdUrl": "content/Christ/the-gospels-and-the-book-of-mormon.md",
         "keywords": [
             "gospels",
@@ -384,9 +384,9 @@
         ]
     },
     {
-        "category": "Christ",
         "title": "Crucifixion - Thoughts",
-        "slug": "crucifixion-thoughts",
+        "category": "Christ",
+        "url": "writings/Christ/thoughts-on-the-crucifixion.html",
         "mdUrl": "content/Christ/thoughts-on-the-crucifixion.md",
         "keywords": [
             "crucifixion",
@@ -399,9 +399,9 @@
         ]
     },
     {
-        "category": "Christ",
         "title": "Discipleship-1",
-        "slug": "discipleship-1",
+        "category": "Christ",
+        "url": "writings/Christ/discipleship.html",
         "mdUrl": "content/Christ/discipleship.md",
         "keywords": [
             "discipleship",
@@ -414,9 +414,9 @@
         ]
     },
     {
-        "category": "Christ",
         "title": "Staying True to the Savior in this World",
-        "slug": "staying-true-to-the-savior-in-this-world",
+        "category": "Christ",
+        "url": "writings/Christ/staying-true-to-the-savior-in-this-world.html",
         "mdUrl": "content/Christ/staying-true-to-the-savior-in-this-world.md",
         "keywords": [
             "discipleship",
@@ -429,9 +429,9 @@
         ]
     },
     {
-        "category": "Christ",
         "title": "Doctrine of Christ",
-        "slug": "doctrine-of-christ",
+        "category": "Christ",
+        "url": "writings/Christ/doctrine-of-christ.html",
         "mdUrl": "content/Christ/doctrine-of-christ.md",
         "keywords": [
             "doctrine of christ",
@@ -444,9 +444,9 @@
         ]
     },
     {
-        "category": "Christ",
         "title": "What is an Anti-Christ & Priestcraft?",
-        "slug": "what-is-an-anti-christ-and-priestcraft",
+        "category": "Christ",
+        "url": "writings/Christ/what-is-an-anti-christ-and-priestcraft.html",
         "mdUrl": "content/Christ/what-is-an-anti-christ-and-priestcraft.md",
         "keywords": [
             "anti-christ",
@@ -461,9 +461,9 @@
         ]
     },
     {
-        "category": "Covenants, obedience, and missionary work",
         "title": "Results and Rewards of Obedience",
-        "slug": "results-and-rewards-of-obedience",
+        "category": "Covenants, obedience, and missionary work",
+        "url": "writings/Covenants-obedience-and-missionary-work/results-and-rewards-of-obedience.html",
         "mdUrl": "content/Covenants-obedience-and-missionary-work/results-and-rewards-of-obedience.md",
         "keywords": [
             "obedience",
@@ -478,9 +478,9 @@
         ]
     },
     {
-        "category": "Covenants, obedience, and missionary work",
         "title": "Temple ordinances and covenants",
-        "slug": "temple-ordinances-and-covenants",
+        "category": "Covenants, obedience, and missionary work",
+        "url": "writings/Covenants-obedience-and-missionary-work/temple-ordinances-and-covenants.html",
         "mdUrl": "content/Covenants-obedience-and-missionary-work/temple-ordinances-and-covenants.md",
         "keywords": [
             "temple",
@@ -494,9 +494,9 @@
         ]
     },
     {
-        "category": "Covenants, obedience, and missionary work",
         "title": "Conversion - Thoughts",
-        "slug": "conversion-thoughts",
+        "category": "Covenants, obedience, and missionary work",
+        "url": "writings/Covenants-obedience-and-missionary-work/conversion-thoughts.html",
         "mdUrl": "content/Covenants-obedience-and-missionary-work/conversion-thoughts.md",
         "keywords": [
             "conversion",
@@ -509,9 +509,9 @@
         ]
     },
     {
-        "category": "Covenants, obedience, and missionary work",
         "title": "Thrust in your sickle",
-        "slug": "thrust-in-your-sickle",
+        "category": "Covenants, obedience, and missionary work",
+        "url": "writings/Covenants-obedience-and-missionary-work/thrust-in-your-sickle.html",
         "mdUrl": "content/Covenants-obedience-and-missionary-work/thrust-in-your-sickle.md",
         "keywords": [
             "sickle",

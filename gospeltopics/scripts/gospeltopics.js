@@ -95,7 +95,8 @@ function buildSidebar() {
             const li = document.createElement("li");
             const link = document.createElement("a");
 
-            link.href = "/hamiltondesigns/gospeltopics/" + item.url;
+            // link.href = "/hamiltondesigns/gospeltopics/" + item.url;
+            link.href = "/hamiltondesigns/gospeltopics/writing.html?slug=" + item.slug;
             link.textContent = item.title;
 
             li.appendChild(link);
@@ -145,15 +146,35 @@ function enableSidebarCollapsing() {
 /* ============================================================
    ACTIVE LINK HIGHLIGHTING
 ============================================================ */
+// function highlightActiveLink() {
+//     const links = document.querySelectorAll(".sidebar a");
+//     const current = window.location.pathname;
+
+//     links.forEach(link => {
+//         if (link.getAttribute("href") === current) {
+//             link.classList.add("active");
+
+//             // Auto-expand the category containing the active link
+//             const parentList = link.closest("ul");
+//             if (parentList) {
+//                 parentList.classList.remove("collapsed");
+//             }
+//         }
+//     });
+// }
+
 function highlightActiveLink() {
     const links = document.querySelectorAll(".sidebar a");
-    const current = window.location.pathname;
+    const params = new URLSearchParams(window.location.search);
+    const currentSlug = params.get("slug");
 
     links.forEach(link => {
-        if (link.getAttribute("href") === current) {
+        const url = new URL(link.href);
+        const linkSlug = url.searchParams.get("slug");
+
+        if (currentSlug && linkSlug === currentSlug) {
             link.classList.add("active");
 
-            // Auto-expand the category containing the active link
             const parentList = link.closest("ul");
             if (parentList) {
                 parentList.classList.remove("collapsed");
@@ -161,6 +182,7 @@ function highlightActiveLink() {
         }
     });
 }
+
 
 /* ============================================================
    SIDEBAR SEARCH (with fuzzy matching)
@@ -221,7 +243,7 @@ function buildCards(filteredWritings) {
         card.classList.add("card");
 
         card.innerHTML = `
-            <a href="/hamiltondesigns/gospeltopics/${item.url}" class="card-link">
+        <a href="/hamiltondesigns/gospeltopics/writing.html?slug=${item.slug}" class="card-link">
                 <h3>${item.title}</h3>
                 <p class="category">${item.category}</p>
                 <p class="keywords">${item.keywords.join(", ")}</p>
@@ -353,8 +375,11 @@ async function loadMarkdownIfNeeded() {
     const container = document.getElementById("markdownContent");
     if (!container) return;
 
-    const current = window.location.pathname;
-    const match = writings.find(w => current.endsWith(w.url));
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("slug");
+    if (!slug) return;
+
+    const match = writings.find(w => w.slug === slug);
     if (!match || !match.mdUrl) return;
 
     try {
@@ -369,6 +394,7 @@ async function loadMarkdownIfNeeded() {
         console.error("Error loading markdown:", err);
     }
 }
+
 
 
 /* ============================================================
@@ -633,12 +659,54 @@ function markdownToHtml(md) {
 /* ============================================================
    RELATED WRITINGS (based on shared keywords)
 ============================================================ */
+
+// function renderRelatedWritings() {
+//     const container = document.getElementById("relatedWritings");
+//     if (!container) return;
+
+//     const current = window.location.pathname;
+//     const currentItem = writings.find(w => current.endsWith(w.url));
+//     if (!currentItem) return;
+
+//     const related = writings
+//         .filter(w => w !== currentItem)
+//         .map(w => {
+//             const overlap = w.keywords.filter(k => currentItem.keywords.includes(k));
+//             return { item: w, score: overlap.length };
+//         })
+//         .filter(x => x.score > 0)
+//         .sort((a, b) => b.score - a.score)
+//         .slice(0, 5)
+//         .map(x => x.item);
+
+//     if (!related.length) {
+//         container.innerHTML = "<p>No related writings found.</p>";
+//         return;
+//     }
+
+//     const list = document.createElement("ul");
+//     related.forEach(w => {
+//         const li = document.createElement("li");
+//         const link = document.createElement("a");
+//         link.href = w.url;
+//         link.textContent = w.title;
+//         li.appendChild(link);
+//         list.appendChild(li);
+//     });
+
+//     container.innerHTML = "";
+//     container.appendChild(list);
+// }
+
 function renderRelatedWritings() {
     const container = document.getElementById("relatedWritings");
     if (!container) return;
 
-    const current = window.location.pathname;
-    const currentItem = writings.find(w => current.endsWith(w.url));
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("slug");
+    if (!slug) return;
+
+    const currentItem = writings.find(w => w.slug === slug);
     if (!currentItem) return;
 
     const related = writings
@@ -661,7 +729,7 @@ function renderRelatedWritings() {
     related.forEach(w => {
         const li = document.createElement("li");
         const link = document.createElement("a");
-        link.href = w.url;
+        link.href = "/hamiltondesigns/gospeltopics/writing.html?slug=" + w.slug;
         link.textContent = w.title;
         li.appendChild(link);
         list.appendChild(li);
@@ -670,7 +738,6 @@ function renderRelatedWritings() {
     container.innerHTML = "";
     container.appendChild(list);
 }
-
 
 /* ============================================================
    INITIALIZE EVERYTHING

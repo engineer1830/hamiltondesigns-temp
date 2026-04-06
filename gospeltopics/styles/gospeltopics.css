@@ -494,3 +494,9 @@ body.dark a:focus
 {
     color: #ffffff;
 }
+/* Prevent underline on card hover */
+.card:hover a,
+.card a:hover
+{
+    text-decoration: none !important;
+}

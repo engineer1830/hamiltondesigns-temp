@@ -479,7 +479,7 @@ function monteCarloSimulation({
 -------------------------------------------------- */
 
 async function getYahooHistorical(ticker) {
-    const response = await fetch(`/api/yahoo?ticker=${ticker}`);
+    const response = await fetch(`/api/yahoo3?ticker=${ticker}`);
     const raw = await response.json();
 
     return raw.map(d => ({
